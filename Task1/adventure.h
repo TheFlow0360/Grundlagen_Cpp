@@ -5,6 +5,7 @@ class Adventure
 {
 public:
     Adventure();
+    void Start();
 };
 
 #endif // ADVENTURE_H

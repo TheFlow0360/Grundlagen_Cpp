@@ -2,4 +2,10 @@
 
 Adventure::Adventure()
 {
+
+}
+
+void Adventure::Start()
+{
+
 }
