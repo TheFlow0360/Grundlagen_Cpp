@@ -4,7 +4,7 @@
 #include <string>
 #include <list>
 
-#define BOXMAXSIZE 80
+#define BOXMAXSIZE 60
 
 using namespace std;
 
@@ -32,12 +32,12 @@ list<string> ConsoleTools::textToLines(const string &aText, const int aCharsPerL
     return lines;
 }
 
-void ConsoleTools::printBox( string const &aTitle, char const aBorderSymbol = '#' )
+void ConsoleTools::printBox( string const &aTitle, char const aBorderSymbol )
 {
      ConsoleTools::printBox( aTitle, "", aBorderSymbol );
 }
 
-void ConsoleTools::printBox( string const &aTitle, string const &aText, char const aBorderSymbol = '#' )
+void ConsoleTools::printBox( string const &aTitle, string const &aText, char const aBorderSymbol )
 {
     unsigned int width = min( BOXMAXSIZE, ( int ( max( aTitle.size(), aText.size() ) ) ) );
     unsigned int boxWidth = width + 4;

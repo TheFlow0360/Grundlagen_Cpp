@@ -12,8 +12,8 @@ private:
 public:
     ConsoleTools();
 
-    static void printBox( std::string const &aTitle, char const aBorderSymbol );
-    static void printBox( std::string const &aTitle, std::string const &aText, char const aBorderSymbol );
+    static void printBox( std::string const &aTitle, char const aBorderSymbol = '#' );
+    static void printBox( std::string const &aTitle, std::string const &aText, char const aBorderSymbol = '#' );
 };
 
 #endif // CONSOLETOOLS_H
