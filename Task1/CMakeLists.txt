@@ -1,10 +1,12 @@
 set(SOURCE
-   ${SOURCE}
-   ${CMAKE_CURRENT_SOURCE_DIR}/adventure.cpp
-   PARENT_SCOPE
+    ${SOURCE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/adventure.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/room.cpp
+    PARENT_SCOPE
 )
 set(HEADERS
-   ${HEADERS}
-   ${CMAKE_CURRENT_SOURCE_DIR}/adventure.h
-   PARENT_SCOPE
+    ${HEADERS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/adventure.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/room.h
+    PARENT_SCOPE
 )

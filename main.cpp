@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
             if ( option == "0" ) {
                     decisionValid = true;
                     Adventure task1;
-                    task1.Start();
+                    task1.start();
             } else if ( ( option == "x" ) || ( option == "X" ) ) {
                 break;
             } else {

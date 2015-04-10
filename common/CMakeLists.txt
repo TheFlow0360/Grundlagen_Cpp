@@ -1,10 +1,10 @@
 set(SOURCE
-   ${SOURCE}
-   ${CMAKE_CURRENT_SOURCE_DIR}/consoletools.cpp
-   PARENT_SCOPE
+    ${SOURCE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/consoletools.cpp
+    PARENT_SCOPE
 )
 set(HEADERS
-   ${HEADERS}
-   ${CMAKE_CURRENT_SOURCE_DIR}/consoletools.h
-   PARENT_SCOPE
+    ${HEADERS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/consoletools.h
+    PARENT_SCOPE
 )
