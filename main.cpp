@@ -6,7 +6,7 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
     if ( argc > 1 ) {
-        // TODO
+        // TODO start task given by parameter
     } else {
         ConsoleTools::printBox("Basics of C++ Programming");
 
@@ -14,7 +14,6 @@ int main(int argc, char *argv[]) {
         bool decisionValid = false;
         while ( !decisionValid ) {
             cout << "Choose action..." << endl;
-            // TODO: loop folders and get all existing tasks
             cout << "0 - Task 1: Adventure" << endl;
             cout << "X - Exit" << endl << endl;
             cin >> option;

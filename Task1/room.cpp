@@ -63,7 +63,7 @@ void Room::addEnd(string const aOption, string const aValue, string const aText,
 
 int Room::roomExec()
 {
-    cout << this->fText << endl;
+    cout << this->fText << endl << endl;
 
     bool validChoice = false;
     while ( !validChoice ) {
@@ -95,6 +95,6 @@ int Room::roomExec()
                 }
             }
         }
-        cout << "Invalid input - Try again" << endl;
+        cout << "Invalid input - Try again" << endl << endl;
     }
 }

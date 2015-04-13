@@ -15,14 +15,14 @@ void Adventure::loadRooms()
     Room* hallway = new Room("You enter the hallway. It's lit by torches attached to the walls. You see a few doors.");
     startRoom->addOption("[L]eave the room.", "l", hallway->getId());
     hallway->addOption("Open the first [l]eft hand side door.", "l", "The door seems to be locked.");
-    Room* pitfall = new Room("Behind the door is a tunnel. Far away, probably at the end of the way, you can see sunlight. There is no other source of light on the way.");
+    Room* pitfall = new Room("Behind the door is a tunnel. Far away, probably at the end of the way, you can see sunlight. There is no other source of light in the tunnel.");
     hallway->addOption("Open the [s]econd left hand side door.", "s", pitfall->getId());
     Room* endRoom = new Room("Right after entering, the door slams shut behind you. It has no doorknob from inside.  You are trapped!\nIn front of you is a table, on top of it stands a cake. It looks delicious...");
     hallway->addOption("Open the door at your [r]ight.", "r", endRoom->getId());
-    hallway->addEnd("Examine the [t]orches", "t", "AS soon as you touch one of the torches, all of the flames vanish.\nEveryting around you is pitch black. How should you find a way out of here now?", true);
+    hallway->addEnd("Examine the [t]orches", "t", "As soon as you touch one of the torches, all of the flames vanish.\nEverything around you is pitch black. How should you find a way out of here now?", true);
     pitfall->addEnd("An Exit! [R]un towards the light.", "r", "After taking a few steps you hear a rumbling. The ground beneath you vanishes and you start to fall. The fall seems endless...", true);
     pitfall->addOption("No, it's a trap! Let's turn [b]ack", "b", hallway->getId());
-    endRoom->addEnd("Eat the [c]ake!", "c", "It is REALLY delicious. But somehow... You feel sooooo..... sleepy.........", false);
+    endRoom->addEnd("Eat the [c]ake!", "c", "It is REALLY delicious. But somehow... You feel sooooo..... sleepy.........", true);
     endRoom->addEnd("The cake is a [l]ie!", "l", "Lights turn on, the walls are egtting pulled away by mechanical arms.\n\"Congratulations! You successfully mastered the first test chamber of the Aparture Labs Psychological Department. Enjoy your stay in the Enrichment Center.\"", false);
 
     this->fRooms.push_back(*startRoom);
