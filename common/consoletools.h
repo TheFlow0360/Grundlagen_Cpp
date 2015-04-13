@@ -3,6 +3,7 @@
 
 #include <string>
 #include <list>
+#include <cstdlib>
 
 class ConsoleTools
 {
@@ -11,6 +12,14 @@ private:
 
 public:
     ConsoleTools();
+
+    static void clearScreen() {
+#ifdef WIN32
+        if ( !std::system("cls") ) {};
+#else
+        if ( !std::system("clear") ) {};
+#endif
+    }
 
     static void printBox( std::string const &aTitle, char const aBorderSymbol = '#' );
     static void printBox( std::string const &aTitle, std::string const &aText, char const aBorderSymbol = '#' );

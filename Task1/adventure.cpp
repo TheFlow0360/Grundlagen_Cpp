@@ -39,7 +39,7 @@ Room Adventure::getRoom(const unsigned int aId)
             return (*itr);
         }
     }
-    throw ERANGE;
+    throw;
 }
 
 Adventure::Adventure()
@@ -49,14 +49,14 @@ Adventure::Adventure()
 
 void Adventure::start()
 {
-    system("cls");
+    ConsoleTools::clearScreen();
     ConsoleTools::printBox("Task 1: Adventure", "The aim is to create a simple text adventure, which means console output and basic input to decide the course of action. The application itself should be a loop, but it must have a possibility to end the game. Handling of wrong inputs is not needed.");
     while ( true ) {
         cout << "[S]tart the adventure or [q]uit?" << endl;
         string opt;
         cin >> opt;
         if ( ( opt == "S" ) || ( opt == "s" ) ) {
-            system("cls");
+            ConsoleTools::clearScreen();
             int res;
             Room active = this->fRooms.front();
             while ( true ) {
