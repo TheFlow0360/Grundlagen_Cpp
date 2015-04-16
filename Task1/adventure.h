@@ -2,9 +2,10 @@
 #define ADVENTURE_H
 
 #include <list>
+#include "../common/taskbase.h"
 #include "room.h"
 
-class Adventure
+class Adventure : public TaskBase
 {
 private:
     std::list<Room> fRooms;

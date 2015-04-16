@@ -1,0 +1,12 @@
+set(SOURCE
+    ${SOURCE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/scopedemo.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/scopetimer.cpp
+    PARENT_SCOPE
+)
+set(HEADERS
+    ${HEADERS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/scopedemo.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/scopetimer.h
+    PARENT_SCOPE
+)

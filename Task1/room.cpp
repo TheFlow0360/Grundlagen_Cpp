@@ -76,7 +76,7 @@ int Room::roomExec()
 
         string opt;
         cin >> opt;
-        //std::transform(opt.begin(), opt.end(), opt.begin(), tolower);
+        //std::transform(opt.begin(), opt.end(), opt.begin(), std::tolower);
 
         for( itr = this->fOptions.begin(); itr != this->fOptions.end(); ++itr ) {
             if ( opt ==  (*itr).value ) {
