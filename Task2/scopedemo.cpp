@@ -15,7 +15,8 @@ ScopeDemo::ScopeDemo()
 
 void ScopeDemo::start()
 {
-    ScopeTimer measure;
+    MEASURESCOPETIME
+
     cout << "Executing loop in a scope..." << endl;
     this_thread::sleep_for( chrono::milliseconds( 1000 ) );
     cout << "GO!" << endl;
@@ -39,7 +40,7 @@ void ScopeDemo::start()
 
 void ScopeDemo::loopDemo()
 {
-    ScopeTimer measure;
+    MEASURESCOPETIME
 
     for ( int i = 0; i < ( 100000 + MathTools::randUInt(0, 100000) ); i++ ) {
         MathTools::fac(50);
@@ -49,13 +50,15 @@ void ScopeDemo::loopDemo()
 
 void ScopeDemo::sleepDemo()
 {
-    ScopeTimer measure;
+    MEASURESCOPETIME
+
     this_thread::sleep_for( chrono::milliseconds( 1000 + MathTools::randUInt(0, 5000) ) );
 }
 
 void ScopeDemo::adventureDemo()
 {
-    ScopeTimer measure;
+    MEASURESCOPETIME
+
     Adventure adventure;
     adventure.start();
 }

@@ -1,6 +1,7 @@
 #include "adventure.h"
 
 #include <iostream>
+#include <string>
 #include "../common/consoletools.h"
 #include "room.h"
 
