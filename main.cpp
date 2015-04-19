@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include <ctime>
 #include "common/consoletools.h"
 #include "Task1/adventure.h"
 #include "Task2/scopedemo.h"
