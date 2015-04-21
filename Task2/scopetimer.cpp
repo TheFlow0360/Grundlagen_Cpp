@@ -15,7 +15,8 @@ ScopeTimer::ScopeTimer(string const aFile, int const aLine, string const aFuncti
     this->func = aFunction;
     time(&this->startTime);
     this->startClock = clock();
-    this->startChrono = chrono::steady_clock::now();
+    this->startChronoSteady = chrono::steady_clock::now();
+    this->startChronoSystem = chrono::system_clock::now();
 }
 
 ScopeTimer::~ScopeTimer()
@@ -23,7 +24,8 @@ ScopeTimer::~ScopeTimer()
     time_t endTime;
     time(&endTime);
     clock_t endClock = clock();
-    chrono::steady_clock::time_point endChrono = chrono::steady_clock::now();
+    chrono::steady_clock::time_point endChronoSteady = chrono::steady_clock::now();
+    chrono::system_clock::time_point endChronoSystem = chrono::system_clock::now();
 
     cout << endl;
 
@@ -38,10 +40,15 @@ ScopeTimer::~ScopeTimer()
     cout << "It took " << clockDiff << " seconds. Measurement via clock()" << endl;
 
     // via chrono
-    uint64_t chronoDiffMilli = chrono::duration_cast<chrono::milliseconds>( endChrono - startChrono ).count();
-    uint64_t chronoDiffMicro = chrono::duration_cast<chrono::microseconds>( endChrono - startChrono ).count();
-    uint64_t chronoDiffNano = chrono::duration_cast<chrono::nanoseconds>( endChrono - startChrono ).count();
+    uint64_t chronoDiffMilli = chrono::duration_cast<chrono::milliseconds>( endChronoSteady - startChronoSteady ).count();
+    uint64_t chronoDiffMicro = chrono::duration_cast<chrono::microseconds>( endChronoSteady - startChronoSteady ).count();
+    uint64_t chronoDiffNano = chrono::duration_cast<chrono::nanoseconds>( endChronoSteady - startChronoSteady ).count();
     cout << "It took " << chronoDiffMilli << " milliseconds / " << chronoDiffMicro << " microseconds / " << chronoDiffNano << " nanoseconds. Measurement via chrono::steady_clock" << endl;
+
+    chronoDiffMilli = chrono::duration_cast<chrono::milliseconds>( endChronoSystem - startChronoSystem ).count();
+    chronoDiffMicro = chrono::duration_cast<chrono::microseconds>( endChronoSystem - startChronoSystem ).count();
+    chronoDiffNano = chrono::duration_cast<chrono::nanoseconds>( endChronoSystem - startChronoSystem ).count();
+    cout << "It took " << chronoDiffMilli << " milliseconds / " << chronoDiffMicro << " microseconds / " << chronoDiffNano << " nanoseconds. Measurement via chrono::system_clock" << endl;
 
     cout << endl;
 }

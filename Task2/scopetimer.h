@@ -18,7 +18,8 @@ private:
     string func;
     time_t startTime;
     clock_t startClock;
-    chrono::steady_clock::time_point startChrono;
+    chrono::steady_clock::time_point startChronoSteady;
+    chrono::system_clock::time_point startChronoSystem;
 public:
     ScopeTimer(string const aFile, int const aLine, string const aFunction);
     ~ScopeTimer();
