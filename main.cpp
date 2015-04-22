@@ -4,6 +4,7 @@
 #include "common/consoletools.h"
 #include "Task1/adventure.h"
 #include "Task2/scopedemo.h"
+#include "Task3/dynlistdemo.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ int main(int argc, char *argv[]) {
             cout << "Choose action..." << endl;
             cout << "0 - Task 1: Adventure" << endl;
             cout << "1 - Task 2: Scope Time Measurement" << endl;
+            cout << "2 - Task 3: Dynamic Object List" << endl;
             cout << "X - Exit" << endl << endl;
             cin >> option;
             if ( option == "0" ) {
@@ -30,6 +32,10 @@ int main(int argc, char *argv[]) {
                 decisionValid = true;
                 ScopeDemo task2;
                 task2.start();
+            } else if ( option == "2" ) {
+                decisionValid = true;
+                DynListDemo task3;
+                task3.start();
             } else if ( ( option == "x" ) || ( option == "X" ) ) {
                 break;
             } else {

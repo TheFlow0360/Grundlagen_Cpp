@@ -7,5 +7,6 @@ set(SOURCE
 add_subdirectory("${PROJECT_SOURCE_DIR}/common")
 add_subdirectory("${PROJECT_SOURCE_DIR}/Task1")
 add_subdirectory("${PROJECT_SOURCE_DIR}/Task2")
+add_subdirectory("${PROJECT_SOURCE_DIR}/Task3")
 add_executable(${PROJECT_NAME} ${SOURCE} ${HEADERS})
 
