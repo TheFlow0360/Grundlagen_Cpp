@@ -1,7 +1,24 @@
 #ifndef DYNAMICOBJECTLIST_H
 #define DYNAMICOBJECTLIST_H
 
+#include <exception>
+#include <string>
+#include "object.h"
+
 class Object;
+
+class DynamicObjectListException : public std::exception
+{
+public:
+    DynamicObjectListException( const char* aMessage ) { this->m_msg = *aMessage; }
+    ~DynamicObjectListException() throw() {}
+    const char* what() const throw() { return m_msg.c_str(); }
+private:
+    std::string m_msg;
+};
+
+
+#define DYNOBJLIST_START_CAPACITY 10
 
 /// \brief A dynamic list of objects.
 ///
@@ -19,17 +36,17 @@ public:
 
 
   /// Returns the number of valid objects.
-  unsigned int getCount() {return m_count;};
+  unsigned int getCount() { return m_count; }
 
   /// Returns the capacity of the internal array.
-  unsigned int getCapacity() {return m_capacity;};
+  unsigned int getCapacity() { return m_capacity; }
 
 
   /// Reallocates the internal array to at least a given capacity.
   /// \param capacity
   ///   After this call the capacity will be at least this value.
   ///   If the current capacity is equal or greater, nothing will happen.
-  void reserve(unsigned int capacity);
+  void reserve(unsigned int aCapacity);
 
   /// \brief Creates a new object at the end of the list.
   ///
@@ -38,7 +55,7 @@ public:
   ///   The name of the object.
   /// \return
   ///   The created object.
-  Object* createObject_back(char* name);
+  Object* createObject_back(char* aName);
 
   /// \brief Destroys an object at a given position.
   ///
@@ -47,14 +64,14 @@ public:
   ///
   /// \param position
   ///    Index of the object that should be deleted. If the list does not have this many objects, nothing will happen.
-  void destroyObject(unsigned int position);
+  void destroyObject(unsigned int aPosition);
 
   /// \brief Returns the object at the given position index.
   /// \param position
   ///    Index of the queried object.
   /// \return
   ///    Object pointer at position or nullptr if there is no such object.
-  Object* getAt(unsigned int position);
+  Object* getAt(unsigned int aPosition);
 
 
 private:

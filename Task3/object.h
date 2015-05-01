@@ -10,7 +10,7 @@ public:
   ~Object();
 
   /// Returns ID which was passed in the constructor.
-  char* GetName() { return m_name; };
+  char* GetName() { return m_name; }
 
 private:
 
