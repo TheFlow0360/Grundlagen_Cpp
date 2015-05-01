@@ -11,9 +11,9 @@ DynamicObjectList::DynamicObjectList()
 
 DynamicObjectList::~DynamicObjectList()
 {
-    for ( int i = 0; i < m_count; i++ ) {
+    for ( unsigned int i = 0; i < m_count; i++ ) {
         // free the objects before relasing the references
-        delete [] m_list[i];
+        delete m_list[i];
     }
     delete[] m_list;
 }
@@ -26,39 +26,40 @@ void DynamicObjectList::reserve(unsigned int aCapacity)
         return;
     }
 
-   Object* newList[aCapacity];
+    Object** newList;
+    newList = new Object*[aCapacity];
 
-    for ( int i = 0; i < m_count; i++ ) {
+    for ( unsigned int i = 0; i < m_count; i++ ) {
         // move the old object references
         newList[i] = m_list[i];
     }
 
-    if ( m_capacity == 0 ) {
+    if ( m_capacity != 0 ) {
         // free old reference list
         delete[] m_list;
     }
 
-    m_list = (Object**) newList;
+    m_list = newList;
     m_capacity = aCapacity;
 }
 
-Object* DynamicObjectList::createObject_back(char* aName)
+Object* DynamicObjectList::createObject_back(char const* aName)
 {
     if ( m_count >= m_capacity ) {
         // Extend allocation when no more space
         this->reserve( m_capacity * 2 );
     }
-    return new ( m_list[m_count++] ) Object( aName );
+    return m_list[m_count++] = new Object( aName );
 }
 
 void DynamicObjectList::destroyObject(unsigned int aPosition)
 {
     if ( aPosition > m_count ) {
-        throw new DynamicObjectListException( "No Element at this Position!" );
+        // really no error? -.-
     }
 
-    delete[] m_list[aPosition];
-    for ( int i = aPosition + 1; i < m_count; i++ ) {
+    delete m_list[aPosition];
+    for ( unsigned int i = aPosition + 1; i < m_count; i++ ) {
         // move references to avoid gap
         m_list[i - 1] = m_list[i];
     }
@@ -69,7 +70,7 @@ void DynamicObjectList::destroyObject(unsigned int aPosition)
 Object* DynamicObjectList::getAt(unsigned int aPosition)
 {
     if ( aPosition > m_count ) {
-        throw new DynamicObjectListException( "No Element at this Position!" );
+        return nullptr;
     }
     return m_list[aPosition];
 }

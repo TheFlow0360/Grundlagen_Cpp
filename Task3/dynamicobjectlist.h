@@ -7,17 +7,6 @@
 
 class Object;
 
-class DynamicObjectListException : public std::exception
-{
-public:
-    DynamicObjectListException( const char* aMessage ) { this->m_msg = *aMessage; }
-    ~DynamicObjectListException() throw() {}
-    const char* what() const throw() { return m_msg.c_str(); }
-private:
-    std::string m_msg;
-};
-
-
 #define DYNOBJLIST_START_CAPACITY 10
 
 /// \brief A dynamic list of objects.
@@ -55,7 +44,7 @@ public:
   ///   The name of the object.
   /// \return
   ///   The created object.
-  Object* createObject_back(char* aName);
+  Object* createObject_back(char const* aName);
 
   /// \brief Destroys an object at a given position.
   ///

@@ -97,4 +97,5 @@ int Room::roomExec()
         }
         cout << "Invalid input - Try again" << endl << endl;
     }
+    return 0;
 }

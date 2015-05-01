@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Object::Object(char* name): m_name(name)
+Object::Object(char const* name): m_name(name)
 {
   cout << "Created object with name: " << m_name << endl;
 }

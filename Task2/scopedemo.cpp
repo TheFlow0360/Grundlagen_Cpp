@@ -48,7 +48,7 @@ void ScopeDemo::loopDemo()
 {
     MEASURESCOPETIME
 
-    for ( int i = 0; i < ( 100000 + MathTools::randUInt(0, 100000) ); i++ ) {
+    for ( unsigned int i = 0; i < ( 100000 + MathTools::randUInt(0, 100000) ); i++ ) {
         MathTools::fac(50);
         cout << "." << flush;
     }

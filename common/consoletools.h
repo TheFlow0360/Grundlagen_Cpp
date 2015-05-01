@@ -8,7 +8,7 @@
 class ConsoleTools
 {
 private:
-    static std::list<std::string> textToLines( std::string const &aText, int const aCharsPerLine );
+    static std::list<std::string> textToLines( std::string const &aText, unsigned int const aCharsPerLine );
 
 public:
     ConsoleTools();

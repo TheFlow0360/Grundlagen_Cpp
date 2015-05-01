@@ -6,15 +6,15 @@
 class Object
 {
 public:
-  Object(char* name);
+  Object(char const* name);
   ~Object();
 
   /// Returns ID which was passed in the constructor.
-  char* GetName() { return m_name; }
+  char const* GetName() { return m_name; }
 
 private:
 
-  char* m_name;
+  char const* m_name;
 
   // [This would be a good place for more data...]
 };

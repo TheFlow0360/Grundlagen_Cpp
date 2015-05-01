@@ -12,22 +12,22 @@ ConsoleTools::ConsoleTools()
 {
 }
 
-list<string> ConsoleTools::textToLines(const string &aText, const int aCharsPerLine)
+list<string> ConsoleTools::textToLines( string const &aText, unsigned int const aCharsPerLine)
 {
     size_t curpos = 0;
     size_t nextpos = 0;
 
     list<string> lines;
-    string substr = aText.substr(curpos, aCharsPerLine + 1);
+    string substr = aText.substr( curpos, aCharsPerLine + 1 );
 
-    while (substr.length() == aCharsPerLine + 1 && (nextpos = substr.rfind(' ')) != aText.npos) {
-        lines.push_back(aText.substr(curpos, nextpos));
+    while ( substr.length() == aCharsPerLine + 1 && ( nextpos = substr.rfind( ' ' ) ) != aText.npos ) {
+        lines.push_back( aText.substr( curpos, nextpos ) );
         curpos += nextpos + 1;
-        substr = aText.substr(curpos, aCharsPerLine + 1);
+        substr = aText.substr( curpos, aCharsPerLine + 1 );
     }
 
-    if (curpos != aText.length())
-        lines.push_back(aText.substr(curpos, aText.npos));
+    if ( curpos != aText.length() )
+        lines.push_back( aText.substr( curpos, aText.npos ) );
 
     return lines;
 }
@@ -44,9 +44,9 @@ void ConsoleTools::printBox( string const &aTitle, string const &aText, char con
     list<string> lines = ConsoleTools::textToLines(aText, width);
     unsigned int boxHeight = 3 + ( lines.size() > 0 ? lines.size() + 1 : 0 );
 
-    for ( int i = 0; i < boxHeight; i++ ) {
+    for ( unsigned int i = 0; i < boxHeight; i++ ) {
         if ( ( i == 0 ) || ( i == ( boxHeight - 1 ) ) ) {
-            for ( int j = 0; j < boxWidth; j++ ) {
+            for ( unsigned int j = 0; j < boxWidth; j++ ) {
                 cout << aBorderSymbol;
             }
             cout << endl;
@@ -54,7 +54,7 @@ void ConsoleTools::printBox( string const &aTitle, string const &aText, char con
             cout << aBorderSymbol << " ";
 
             if ( i == 1 ) {
-                int k = 0;
+                unsigned int k = 0;
                 while ( k < ( width - aTitle.size() ) / 2 ) {
                     cout << " ";
                     k++;
@@ -66,12 +66,12 @@ void ConsoleTools::printBox( string const &aTitle, string const &aText, char con
                     k++;
                 }
             } else if ( i == 2 ) {
-                for ( int k = 0; k < width; k++ ) {
+                for ( unsigned int k = 0; k < width; k++ ) {
                     cout << " ";
                 }
             } else {
                 string line = lines.front();
-                int k = line.size();
+                unsigned int k = line.size();
                 cout << line;
                 while ( k < width ) {
                     cout << " ";
