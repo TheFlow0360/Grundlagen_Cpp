@@ -1,0 +1,14 @@
+set(SOURCE
+    ${SOURCE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/randomchar.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/program.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/testobject.cpp
+    PARENT_SCOPE
+)
+set(HEADERS
+    ${HEADERS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/randomchar.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/program.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/testobject.h
+    PARENT_SCOPE
+)
