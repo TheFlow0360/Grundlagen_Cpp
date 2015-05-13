@@ -13,13 +13,12 @@
 
 
 // This codes has quite a few (intentional) errors in it
-// TODO: debug and fix the errors.
 
 // Should return the reference to a sum of two ints
-// TODO: rewrite this as a template (without the bug)
-int& Task4::sumTheElements(int a, int b)
+template <typename T>
+T& Task4::sumTheElements(T a, T b)
 {
-    int* result = new int;
+    T* result = new T;
     *result = a + b;
     return *result;
 }

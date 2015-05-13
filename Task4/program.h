@@ -6,7 +6,8 @@
 class Task4 : public TaskBase
 {
 private:
-    int& sumTheElements(int a, int b);
+    template <typename T>
+    T& sumTheElements(T a, T b);
 public:
     Task4();
 
