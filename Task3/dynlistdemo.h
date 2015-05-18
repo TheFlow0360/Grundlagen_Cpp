@@ -3,12 +3,16 @@
 
 #include "../common/taskbase.h"
 
-class DynListDemo : public TaskBase
-{
-public:
-    DynListDemo();
+namespace Task3 {
 
-    void start();
-};
+    class DynListDemo : public TaskBase
+    {
+    public:
+        DynListDemo();
+
+        void start();
+    };
+
+}
 
 #endif // DYNLISTDEMO_H

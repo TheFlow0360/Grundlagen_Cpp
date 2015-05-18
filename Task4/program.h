@@ -1,17 +1,21 @@
-#ifndef PROGRAM_H
-#define PROGRAM_H
+#ifndef PROGRAMTASK4_H
+#define PROGRAMTASK4_H
 
 #include "../common/taskbase.h"
 
-class Task4 : public TaskBase
-{
-private:
-    template <typename T>
-    T& sumTheElements(T a, T b);
-public:
-    Task4();
+namespace Task4 {
 
-    void start();
-};
+    class Program : public TaskBase
+    {
+    private:
+        template <typename T>
+        T& sumTheElements(T a, T b);
+    public:
+        Program();
 
-#endif // PROGRAM_H
+        void start();
+    };
+
+}
+
+#endif // PROGRAMTASK4_H

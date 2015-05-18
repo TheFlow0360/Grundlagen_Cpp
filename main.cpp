@@ -7,6 +7,7 @@
 #include "Task2/scopedemo.h"
 #include "Task3/dynlistdemo.h"
 #include "Task4/program.h"
+#include "Task5/program.h"
 
 using namespace std;
 
@@ -25,6 +26,7 @@ int main(int argc, char *argv[]) {
             cout << "1 - Task 2: Scope Time Measurement" << endl;
             cout << "2 - Task 3: Dynamic Object List" << endl;
             cout << "3 - Task 4: Fixed random code" << endl;
+            cout << "4 - Task 5: Extended Dynamic Object List" << endl;
             cout << "X - Exit" << endl << endl;
             cin >> option;
             if ( option == "0" ) {
@@ -37,12 +39,16 @@ int main(int argc, char *argv[]) {
                 task2.start();
             } else if ( option == "2" ) {
                 decisionValid = true;
-                DynListDemo task3;
+                Task3::DynListDemo task3;
                 task3.start();
             } else if ( option == "3" ) {
                 decisionValid = true;
-                Task4 task4;
+                Task4::Program task4;
                 task4.start();
+            } else if ( option == "4" ) {
+                decisionValid = true;
+                Task5::Program task5;
+                task5.start();
             } else if ( ( option == "x" ) || ( option == "X" ) ) {
                 break;
             } else {

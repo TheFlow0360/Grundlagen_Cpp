@@ -3,20 +3,23 @@
 
 /// This object class serves basically as dummy for an "any object".
 /// Later we will learn different possibilities to story "anything" in here.
-class Object
-{
-public:
-  Object(char const* name);
-  ~Object();
 
-  /// Returns ID which was passed in the constructor.
-  char const* GetName() { return m_name; }
+namespace Task3 {
+    class Object
+    {
+    public:
+      Object(char const* name);
+      ~Object();
 
-private:
+      /// Returns ID which was passed in the constructor.
+      char const* GetName() { return m_name; }
 
-  char const* m_name;
+    private:
 
-  // [This would be a good place for more data...]
-};
+      char const* m_name;
+
+      // [This would be a good place for more data...]
+    };
+}
 
 #endif // OBJECT_H

@@ -9,5 +9,6 @@ add_subdirectory("${PROJECT_SOURCE_DIR}/Task1")
 add_subdirectory("${PROJECT_SOURCE_DIR}/Task2")
 add_subdirectory("${PROJECT_SOURCE_DIR}/Task3")
 add_subdirectory("${PROJECT_SOURCE_DIR}/Task4")
+add_subdirectory("${PROJECT_SOURCE_DIR}/Task5")
 add_executable(${PROJECT_NAME} ${SOURCE} ${HEADERS})
 

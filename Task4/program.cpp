@@ -12,67 +12,67 @@
 // # Bonus 2: Make everything const correct.
 
 
-// This codes has quite a few (intentional) errors in it
+namespace Task4 {
 
-// Should return the reference to a sum of two ints
-template <typename T>
-T& Task4::sumTheElements(T a, T b)
-{
-    T* result = new T;
-    *result = a + b;
-    return *result;
-}
-
-Task4::Task4()
-{
-}
-
-void Task4::start()
-{
-    // using a bit of random here.
-    srand(time(nullptr)); //initialize random seed based on time
-
-    // Where will this object live? Is this a good choice? Why or why not?
-    TestObject anObject = TestObject(30);
-
-    // Name differences between pointers and references
-    TestObject* anotherObject = new TestObject(2);
-
-    // When should we use pointers, references and values? why?
-    TestObject &referenceToAnObject = anObject;
-
-    TestObject &referenceToAnotherObject = *anotherObject;
-
-    TestObject* pointerToAnObject = &anObject;
-
-    // avoid warning
-    (void) pointerToAnObject;
-
-    TestObject* pointerToAnotherObject = &referenceToAnotherObject;
-    
-
-    // Testing if the correct strings are being printed.
-    referenceToAnotherObject.printAllStrings();
-    std::cout << "The Following should be the same as above: " << std::endl;
-    pointerToAnotherObject->printAllStrings();
-
-    std::cout << std::endl << "total number of strings:" << std::endl;
-   
-    int& TotalElementNumber = sumTheElements(referenceToAnObject.elementCount(), referenceToAnotherObject.elementCount());
-    std::cout << TotalElementNumber << std::endl;
-    std::cout << "Do calculations in another scope and display the same value again inside that scope: " << std::endl; 
-    { 
-        //this isn't really doing anything, just for testing purposes
-        int ignoreMe = 20; 
-        ignoreMe *= TotalElementNumber;
-        std::cout << TotalElementNumber << std::endl;
+    template <typename T>
+    T& Program::sumTheElements(T a, T b)
+    {
+        T* result = new T;
+        *result = a + b;
+        return *result;
     }
 
-    std::cout << "And again outside the scope: " << std::endl;
-    std::cout << TotalElementNumber << std::endl;
+    Program::Program()
+    {
+    }
+
+    void Program::start()
+    {
+        // using a bit of random here.
+        srand(time(nullptr)); //initialize random seed based on time
+
+        // Where will this object live? Is this a good choice? Why or why not?
+        TestObject anObject = TestObject(30);
+
+        // Name differences between pointers and references
+        TestObject* anotherObject = new TestObject(2);
+
+        // When should we use pointers, references and values? why?
+        TestObject &referenceToAnObject = anObject;
+
+        TestObject &referenceToAnotherObject = *anotherObject;
+
+        TestObject* pointerToAnObject = &anObject;
+
+        // avoid warning
+        (void) pointerToAnObject;
+
+        TestObject* pointerToAnotherObject = &referenceToAnotherObject;
 
 
-    delete anotherObject;
+        // Testing if the correct strings are being printed.
+        referenceToAnotherObject.printAllStrings();
+        std::cout << "The Following should be the same as above: " << std::endl;
+        pointerToAnotherObject->printAllStrings();
+
+        std::cout << std::endl << "total number of strings:" << std::endl;
+
+        int& TotalElementNumber = sumTheElements(referenceToAnObject.elementCount(), referenceToAnotherObject.elementCount());
+        std::cout << TotalElementNumber << std::endl;
+        std::cout << "Do calculations in another scope and display the same value again inside that scope: " << std::endl;
+        {
+            //this isn't really doing anything, just for testing purposes
+            int ignoreMe = 20;
+            ignoreMe *= TotalElementNumber;
+            std::cout << TotalElementNumber << std::endl;
+        }
+
+        std::cout << "And again outside the scope: " << std::endl;
+        std::cout << TotalElementNumber << std::endl;
+
+
+        delete anotherObject;
+
+    }
 
 }
-

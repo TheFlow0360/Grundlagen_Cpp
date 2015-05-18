@@ -3,12 +3,16 @@
 
 using namespace std;
 
-Object::Object(char const* name): m_name(name)
-{
-  cout << "Created object with name: " << m_name << endl;
-}
+namespace Task3 {
 
-Object::~Object()
-{
-  cout << "Destroyed object with name: " << m_name << endl;
+    Object::Object(char const* name): m_name(name)
+    {
+        cout << "Created object with name: " << m_name << endl;
+    }
+
+    Object::~Object()
+    {
+        cout << "Destroyed object with name: " << m_name << endl;
+    }
+
 }
