@@ -1,0 +1,16 @@
+set(SOURCE
+    ${SOURCE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/node.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/valuenode.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/operators.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/program.cpp
+    PARENT_SCOPE
+)
+set(HEADERS
+    ${HEADERS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/node.h
+	${CMAKE_CURRENT_SOURCE_DIR}/valuenode.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/operators.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/program.h
+    PARENT_SCOPE
+)

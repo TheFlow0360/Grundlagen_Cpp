@@ -184,7 +184,7 @@ namespace Task5 {
         std::sort(toDelete.begin(), toDelete.end(), std::greater<unsigned int>() );
 
         for ( unsigned int i : toDelete) {
-            this->destroyObject(i);     // sucks hard, what if someone else has the object too?
+            this->destroyObject(i);
         }
         shrink();
         return *this;

@@ -25,53 +25,34 @@ namespace Task5 {
         std::cout << "Destroyed object with name: " << m_name << std::endl;
     }
 
-    Object &Object::operator+=(Object &o)
-    {
-        std::stringstream conc;
-        conc << this->m_name <<  " " << o.GetName();
-        std::string newName = conc.str();
-        this->m_name = (char*) newName.c_str();
-        return *this;
-    }
-
-    Object &Object::operator-=(Object &o)
-    {
-        return *this; // useless?
-    }
-
-    Object &Object::operator|=(Object &o)
-    {
-        return *this; // useless?
-    }
-
     bool Object::operator<(const Object &o) const
     {
-        return ( this->m_name < o.GetName() );
+        return ( strcmp( this->m_name, o.GetName() ) < 0 );
     }
 
     bool Object::operator<=(const Object &o) const
     {
-        return ( this->m_name <= o.GetName() );
+        return ( strcmp( this->m_name, o.GetName() ) <= 0 );
     }
 
     bool Object::operator>(const Object &o) const
     {
-        return ( this->m_name > o.GetName() );
+        return ( strcmp( this->m_name, o.GetName() ) > 0 );
     }
 
     bool Object::operator>=(const Object &o) const
     {
-        return ( this->m_name >= o.GetName() );
+        return ( strcmp( this->m_name, o.GetName() ) >= 0 );
     }
 
     bool Object::operator==(const Object &o) const
     {
-        return ( this->m_name == o.GetName() );
+        return ( strcmp( this->m_name, o.GetName() ) == 0 );
     }
 
     bool Object::operator!=(const Object &o) const
     {
-        return ( this->m_name == o.GetName() );
+        return ( strcmp( this->m_name, o.GetName() ) != 0 );
     }
 
 }

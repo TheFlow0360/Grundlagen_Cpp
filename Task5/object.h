@@ -18,10 +18,6 @@ namespace Task5 {
         char const* GetType() const { return "Const object"; }
         char const* GetType() { return "not const"; }
 
-        Object& operator+=(Object& o);
-        Object& operator-=(Object& o);
-        Object& operator|=(Object& o);
-
         bool operator<(const Object& o) const;
         bool operator<=(const Object& o) const;
         bool operator>(const Object& o) const;

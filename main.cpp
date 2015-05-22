@@ -8,6 +8,7 @@
 #include "Task3/dynlistdemo.h"
 #include "Task4/program.h"
 #include "Task5/program.h"
+#include "Task6/program.h"
 
 using namespace std;
 
@@ -27,6 +28,7 @@ int main(int argc, char *argv[]) {
             cout << "2 - Task 3: Dynamic Object List" << endl;
             cout << "3 - Task 4: Fixed random code" << endl;
             cout << "4 - Task 5: Extended Dynamic Object List" << endl;
+            cout << "5 - Task 6: Expression Tree" << endl;
             cout << "X - Exit" << endl << endl;
             cin >> option;
             if ( option == "0" ) {
@@ -49,6 +51,10 @@ int main(int argc, char *argv[]) {
                 decisionValid = true;
                 Task5::Program task5;
                 task5.start();
+            } else if ( option == "5" ) {
+                decisionValid = true;
+                Task6::Program task6;
+                task6.start();
             } else if ( ( option == "x" ) || ( option == "X" ) ) {
                 break;
             } else {
