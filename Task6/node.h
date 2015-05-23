@@ -24,6 +24,8 @@ public:
 	///		of the copy CTor also deletes the normal standard constructor.
 	Node() {}
 
+    virtual ~Node() {}
+
 	/// \brief Each child class must know how to evaluate itself
 	/// \param [in] _varMap Read access to the variable mapping.
 	/// 
@@ -34,8 +36,6 @@ public:
 	///		If there is an entry with that name use its value, otherwise do a
 	///		node specific evaluation.
 	virtual int evaluate(const VariableMap* _varMap) const = 0;
-
-	// TODO: the destructor
 
 	/// \brief Create a string representation for the expression
 	/// \details
@@ -56,7 +56,4 @@ private:
 	Node& operator = (const Node&);
 };
 
-// Extend c++ streaming for a possibility to print expressions
-// TODO
-// Write a stream operator << which uses the toString() method to create a
-// representation of the expression.
+std::ostream& operator<< (std::ostream& stream, const Node& n);

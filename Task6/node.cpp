@@ -1,3 +1,6 @@
 #include "node.h"
 
-// TODO: streaming operator implementation
+std::ostream &operator<<(std::ostream& stream, const Node& n)
+{
+    return stream << n.toString();
+}

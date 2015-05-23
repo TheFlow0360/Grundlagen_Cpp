@@ -6,7 +6,11 @@
 
 namespace Task6 {
 
-    int Program::start()
+Program::Program()
+{
+}
+
+void Program::start()
     {
         // Map a single variable
         VariableMap variables;
@@ -38,8 +42,6 @@ namespace Task6 {
         // The expression: -(x * x) evaluates to -1764
 
         delete expression2;
-
-        return 0;
     }
 
 }

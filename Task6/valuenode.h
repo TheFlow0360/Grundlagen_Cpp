@@ -15,7 +15,10 @@ public:
 	///		implementation.
 	virtual Node* clone() const override;
 
-	// TODO: fill this class
+    virtual int evaluate(const VariableMap* _varMap) const override;
+
+    virtual std::string toString() const override;
+
 
 private:
 	/// \brief Store the value as string.
@@ -26,6 +29,6 @@ private:
 	std::string m_val;
 
 	// Still Non-Copyable
-	Value(const Value&);
-	Value& operator = (const Value&);
+    Value(const Value& v);
+    Value& operator = (const Value& v);
 };

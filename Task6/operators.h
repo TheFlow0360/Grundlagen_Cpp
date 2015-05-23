@@ -7,7 +7,9 @@
 class OpAdd: public Node
 {
 public:
-	/// \brief Must have two defined children -> references are a good choice.
+    ~OpAdd() override;
+
+    /// \brief Must have two defined children -> references are a good choice.
 	/// \details You need to COPY the nodes to have an own node*. To do that
 	///		you will need to add a clone() function which returns a real copy
 	///		of the calling object by a ´Node*´.
@@ -23,8 +25,9 @@ public:
 	///		implementation.
 	virtual Node* clone() const override;
 
-	// TODO: fill this class
-	// TODO: don't forget the destructor
+    virtual int evaluate(const VariableMap* _varMap) const override;
+
+    virtual std::string toString() const override;
 
 private:
 	Node* m_children[2];
@@ -39,6 +42,8 @@ private:
 class OpMul: public Node
 {
 public:
+    ~OpMul() override;
+
 	/// \copydoc OpAdd(const Node&, const Node&)
 	OpMul(const Node& lhs, const Node& rhs);
 
@@ -51,8 +56,9 @@ public:
 	///		implementation.
 	virtual Node* clone() const override;
 
-	// TODO: fill this class
-	// TODO: don't forget the destructor
+    virtual int evaluate(const VariableMap* _varMap) const override;
+
+    virtual std::string toString() const override;
 
 private:
 	Node* m_children[2];
@@ -67,6 +73,8 @@ private:
 class OpNegate: public Node
 {
 public:
+    ~OpNegate() override;
+
 	/// \copydoc OpAdd(const Node&, const Node&)
 	OpNegate(const Node& lhs);
 
@@ -79,8 +87,9 @@ public:
 	///		implementation.
 	virtual Node* clone() const override;
 
-	// TODO: fill this class
-	// TODO: don't forget the destructor
+    virtual int evaluate(const VariableMap* _varMap) const override;
+
+    virtual std::string toString() const override;
 
 private:
 	Node* m_child;
