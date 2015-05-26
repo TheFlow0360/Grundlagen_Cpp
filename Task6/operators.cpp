@@ -11,7 +11,8 @@ OpAdd::OpAdd(const OpAdd &)
 
 OpAdd::~OpAdd()
 {
-    //delete[] m_children;
+    delete m_children[0];
+    delete m_children[1];
 }
 
 OpAdd::OpAdd(const Node& lhs, const Node& rhs)
@@ -59,7 +60,8 @@ OpMul::OpMul(const OpMul &)
 
 OpMul::~OpMul()
 {
-    //delete[] m_children;
+    delete m_children[0];
+    delete m_children[1];
 }
 
 OpMul::OpMul(const Node& lhs, const Node& rhs)
