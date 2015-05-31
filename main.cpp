@@ -9,6 +9,7 @@
 #include "Task4/program.h"
 #include "Task5/program.h"
 #include "Task6/program.h"
+#include "Task7/main.h"
 
 using namespace std;
 
@@ -29,6 +30,7 @@ int main(int argc, char *argv[]) {
             cout << "3 - Task 4: Fixed random code" << endl;
             cout << "4 - Task 5: Extended Dynamic Object List" << endl;
             cout << "5 - Task 6: Expression Tree" << endl;
+            cout << "6 - Task 7: Own Vector implementation" << endl;
             cout << "X - Exit" << endl << endl;
             cin >> option;
             if ( option == "0" ) {
@@ -55,6 +57,10 @@ int main(int argc, char *argv[]) {
                 decisionValid = true;
                 Task6::Program task6;
                 task6.start();
+            } else if ( option == "6" ) {
+                decisionValid = true;
+                Task7::VectorDemo task7;
+                task7.start();
             } else if ( ( option == "x" ) || ( option == "X" ) ) {
                 break;
             } else {

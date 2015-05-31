@@ -7,6 +7,13 @@
 /// \brief Mixin for calculating the length (euclidian norm / distance) of a vector
 // BONUS: Implement a mixin that calculates the length of a vector.
 // Change the vector template to include this mixin.
+//template <typename Base>
+//class Speedometer : public Base {
+//public:
+//  void display() {
+//    std::cout << this->speed() << std::endl;
+//  }
+//};
 
 
 /// \brief Template class for (math) vectors of variable length and type.
@@ -24,38 +31,87 @@ public:
 
 
 	/// Constructor that initializes all elements with zero.
-	// Todo: Implement a constructor without any arguments that does exactly that.
+    Vector() {
+        for ( unsigned int i = 0; i < Size; i++ ) {
+            m_elements[ i ] = 0;
+        }
+    }
 
 	/// Constructor that copies the vector
-	// Todo: Implement a copy-constructor.
+    Vector(Vector<Size, Element> const& v) {
+        for ( unsigned int i = 0; i < Size; i++ ) {
+            m_elements[ i ] = v[ i ];
+        }
+    }
 
 	/// Constructor that copies a vector of an arbitrary type with the same size.
 	/// The type must be convertible by a static_cast to Element.
-	// Todo: Implement a constructor that takes a reference to a vector with
-	// an arbitrary element type. The right vector must have the same size - only
-	// the element type differs.
-	// Hint: Take the element type of the right vector as additional template argument
-	// for the function.
+    template<typename T>
+    Vector(Vector<Size, T> const& v) {
+        for ( unsigned int i = 0; i < Size; i++ ) {
+            m_elements[ i ] = v[ i ];
+        }
+    }
 
 	/// \brief Constructor that initializes the vector from a string.
 	/// The string should contain values, separated by spaces. Uses stringstream for parsing.
 	/// Will set all other elements to zero.
-	// Todo: Implement a construction from std::string that fulfills the given documentation.
+    Vector(std::string const valueString) {
+        std::stringstream valueStream(valueString);
+        unsigned int i = 0;
+        while ( valueStream >> m_elements[ i++ ]) {
+            if ( i > Size )
+                throw std::invalid_argument("Argument count doesn't match Length.");
+        }
+        i--;
+        while ( i < Size ) {
+            m_elements[ i++ ] = 0;
+        }
+    }
 
 	/// \brief Returns a string representation of the vector.
-	// Todo: Implement a casting operator overload to std::string.
+    std::string toString() const {
+        std::stringstream output;
+        for ( unsigned int i = 0; i < Size; i++ ) {
+            output << ( i > 0 ? " " : "") << m_elements[ i ];
+        }
+        return output.str();
+    }
+
+    operator std::string() {
+        return this->toString();
+    }
 
 	/// \brief Read access to an element.
 	/// Checks for errors in debug mode - perform an error report of your choice
-	// Todo: Implement a [] operator overload for reading!
+    Element operator[](unsigned int const pos) const {
+    #ifdef DEBUG
+        if ( pos >= SIZE ) {
+            throw std::out_of_range( "Index out of bounds." );
+        }
+    #endif
+        return m_elements[ pos ];
+    }
 
 	/// \brief Write access to an element.
 	/// Checks for errors in debug mode - perform an error report of your choice
-	// Todo: Implement a [] operator overload for read/write access!
+    Element& operator[](unsigned int const pos) {
+    #ifdef DEBUG
+        if ( pos >= SIZE ) {
+            throw std::out_of_range( "Index out of bounds." );
+        }
+    #endif
+        return m_elements[ pos ];
+    }
 
 	/// \brief Adds to vectors of the same size and type element-wise.
-	// Todo: Implement a + operator overload that takes a vector of same type and size.
-
+    Vector<Size, Element> operator+(Vector<Size, Element> const& v) {
+        Vector<Size, Element>* res = new Vector<Size, Element>();
+        for ( unsigned int i = 0; i < Size; i++ ) {
+            (*res)[ i ] = m_elements[ i ] + v[ i ];
+        }
+        return *res;
+    }
 
 	/// \brief Simple template programming trick to make size accessible from outside.
 	enum MetaInfo
@@ -65,5 +121,5 @@ public:
 
 private:
 	/// Intern data representation.
-	Element elements[Size];
+    Element m_elements[Size];
 };
