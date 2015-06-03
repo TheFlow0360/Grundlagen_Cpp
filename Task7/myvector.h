@@ -106,11 +106,11 @@ public:
 
 	/// \brief Adds to vectors of the same size and type element-wise.
     Vector<Size, Element> operator+(Vector<Size, Element> const& v) {
-        Vector<Size, Element>* res = new Vector<Size, Element>();
+        Vector<Size, Element> res;
         for ( unsigned int i = 0; i < Size; i++ ) {
-            (*res)[ i ] = m_elements[ i ] + v[ i ];
+            res[ i ] = m_elements[ i ] + v[ i ];
         }
-        return *res;
+        return res;
     }
 
 	/// \brief Simple template programming trick to make size accessible from outside.
