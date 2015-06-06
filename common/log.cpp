@@ -1,21 +1,29 @@
 #include "log.h"
 
 #include <ctime>
+#include <sstream>
+#ifdef DEBUG
+    #include <iostream>
+#else
+    #include <fstream>
+#endif
+
 
 std::string Log::logFilePath = DEFAULT_LOGFILE;
 
 void Log::error(std::string const msg)
 {
-    #ifdef DEBUG
-    std::streambuf logfile;
-    logfile = std::cout;
-    #else
+    std::stringstream log;
+    log << currentDateTime() <<  " [ERROR]:\t" << msg << "\n";
+
+#ifdef DEBUG
+    std::cout << log;
+#else
     std::ofstream logfile;
     logfile.open( logFilePath.c_str(), std::ofstream::out | std::ofstream::app );
-
-    #endif
-    logfile << currentDateTime() <<  " [ERROR]:\t" << msg << "\n";
+    logfile << log;
     logfile.close();
+#endif
 
     throw std::exception();
 }
@@ -25,18 +33,28 @@ void Log::setLogfile(std::string path)
     Log::logFilePath = path;
 }
 
+void Log::debug(const std::string msg)
+{
+#ifdef DEBUG
+    std::cout << currentDateTime() <<  " [DEBUG]:\t" << msg << std::endl;
+#else
+    (void) msg;
+#endif
+}
+
 void Log::warning(std::string const msg)
 {
-    #ifdef DEBUG
-    std::streambuf logfile;
-    logfile = std::cout;
-    #else
+    std::stringstream log;
+    log << currentDateTime() <<  " [WARNING]:\t" << msg << "\n";
+
+#ifdef DEBUG
+    std::cout << log;
+#else
     std::ofstream logfile;
     logfile.open( logFilePath.c_str(), std::ofstream::out | std::ofstream::app );
-
-    #endif
-    logfile << currentDateTime() <<  " [WARNING]:\t" << msg << "\n";
+    logfile << log;
     logfile.close();
+#endif
 }
 
 const std::string Log::currentDateTime()
@@ -45,7 +63,7 @@ const std::string Log::currentDateTime()
     struct tm  tstruct;
     char       buf[80];
     tstruct = *localtime(&now);
-    strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
+    strftime(buf, sizeof(buf), "%X", &tstruct);
 
     return buf;
 }

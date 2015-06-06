@@ -3,17 +3,12 @@
 
 #include <string>
 
-#ifdef DEBUG
-    #include <iostream>
-#else
-    #include <fstream>
-#endif
-
 #define DEFAULT_LOGFILE "./Logfile"
 
 class Log
 {
 public:
+    static void debug(std::string const msg);
     static void warning(std::string const msg);
     static void error(std::string const msg);
 
