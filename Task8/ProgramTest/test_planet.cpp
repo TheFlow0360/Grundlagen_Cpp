@@ -1,6 +1,5 @@
 #include "test_planet.h"
 
-#include <QTest>
 #include <sstream>
 #include "targetmock.h"
 #include "../spaceship.h"
@@ -16,7 +15,7 @@ void PlanetTest::cleanup()
     m_testEnv->removeEntity( m_sut );
 }
 
-void PlanetTest::test_setPosition_Failure()
+void PlanetTest::test_setPosition_NoAction()
 {
     QCOMPARE( m_sut->position().toString(), m_testPosition.toString() );
     Position newPos;
@@ -24,27 +23,34 @@ void PlanetTest::test_setPosition_Failure()
     QCOMPARE( m_sut->position().toString(), m_testPosition.toString() );
 }
 
-void PlanetTest::test_attack_Failure()
+void PlanetTest::test_attack_NoAction()
 {
     TargetMock dummy;
+    m_testEnv->addEntity( &dummy );
+
     m_sut->attack( dummy );
 
     QVERIFY2( dummy.attackCount == 0, "Planet was able to attack" );
 }
 
-void PlanetTest::test_damage_Failure()
+void PlanetTest::test_damage_other_NoEffect()
 {
-    Spaceship attacker( "Spaceship", Position( 0, 0, 0 ) );
-    attacker.attack( *m_sut );
+    Spaceship* attacker = m_testEnv->addEntity<Spaceship>( "Spaceship", Position( 0, 0, 0 ) );
+
+    attacker->attack( *m_sut );
+
+    m_testEnv->removeEntity( attacker );
 
     QVERIFY2( m_sut->hitpoints() == 1, "Planet hitpoints changed after normal attack" );
     QVERIFY2( !m_sut->isDestroyed(), "Planet was destroyed by normal attack" );
 }
 
-void PlanetTest::test_damage_Success()
+void PlanetTest::test_damage_deathstar_Destroyed()
 {
-    Deathstar attacker( "Deathstar", Position( 0, 0, 0 ) );
-    attacker.attack( *m_sut );
+    Deathstar* attacker = m_testEnv->addEntity<Deathstar>( "Deathstar", Position( 0, 0, 0 ) );
+    attacker->attack( *m_sut );
+
+    m_testEnv->removeEntity( attacker );
 
     QVERIFY2( m_sut->hitpoints() == 0, "Planet has hitpoints after attack by Deathstar" );
     QVERIFY2( m_sut->isDestroyed(), "Planet survived attack of Deathstar");

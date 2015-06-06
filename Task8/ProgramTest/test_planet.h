@@ -36,10 +36,10 @@ private Q_SLOTS:
     void init();
     void cleanup();
 
-    void test_setPosition_Failure();
-    void test_attack_Failure();
-    void test_damage_Failure();
-    void test_damage_Success();
+    void test_setPosition_NoAction();
+    void test_attack_NoAction();
+    void test_damage_other_NoEffect();
+    void test_damage_deathstar_Destroyed();
     void test_streamOut_Success();
 };
 

@@ -8,7 +8,7 @@ void TargetMock::attack(Target &target)
 
 void TargetMock::doDamageCalc(unsigned int dmgPoints, Target &attacker)
 {
-    (void)dmgPoints;
+    m_hitpoints = dmgPoints;
     (void)attacker;
 }
 

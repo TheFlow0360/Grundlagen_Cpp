@@ -1,6 +1,7 @@
 #ifndef DEATHSTAR_H
 #define DEATHSTAR_H
 
+#include <random>
 #include "spaceship.h"
 
 #define DEATHSTAR_HITPOINTS 1000000

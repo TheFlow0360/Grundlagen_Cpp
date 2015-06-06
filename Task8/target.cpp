@@ -40,10 +40,10 @@ void Target::doDamageCalc(unsigned int dmgPoints, Target &attacker)
         m_hitpoints = 0;
     else
         m_hitpoints -= dmgPoints;
-
     } else {
         std::cout << name() << " is unaffected by the attack of " << attacker.name() << "." << std::endl;
     }
+    std::cout << getHealthBar();
 }
 
 bool Target::isDestroyed() const
