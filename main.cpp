@@ -15,6 +15,8 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
+    try {
+
     srand(time(NULL));
     if ( argc > 1 ) {
         // TODO start task given by parameter
@@ -74,5 +76,13 @@ int main(int argc, char *argv[]) {
         }
     }
     return 0;
+
+    } catch(const std::exception&) {
+#ifndef DEBUG
+        cout << "The program encountered an error and will now be terminated. Look into the logfile for furthre information.";
+#endif
+        return EXIT_FAILURE;
+    }
+
 }
 

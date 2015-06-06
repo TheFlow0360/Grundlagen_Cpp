@@ -36,8 +36,9 @@
 // Has far higher shields
 // Can be damaged by spaceships with a 25% chance of exploding directly (without needing to get the shields to zero).
 //        (- the reactor core can be hit through the exhaust vent. ;) )       
-#include "program.h"
 
+#include "program.h"
+#include "spacegame.h"
 
 namespace Task8 {
 
@@ -46,7 +47,9 @@ namespace Task8 {
 
     void Program::start()
     {
+        //SpaceGame universe;
 
+        //universe.addEntity();
 
     }
 

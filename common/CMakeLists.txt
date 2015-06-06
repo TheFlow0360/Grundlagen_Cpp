@@ -2,6 +2,7 @@ set(SOURCE
     ${SOURCE}
     ${CMAKE_CURRENT_SOURCE_DIR}/consoletools.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/mathtools.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/log.cpp
     PARENT_SCOPE
 )
 set(HEADERS
@@ -9,5 +10,6 @@ set(HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/consoletools.h
     ${CMAKE_CURRENT_SOURCE_DIR}/mathtools.h
     ${CMAKE_CURRENT_SOURCE_DIR}/taskbase.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/log.h
     PARENT_SCOPE
 )
