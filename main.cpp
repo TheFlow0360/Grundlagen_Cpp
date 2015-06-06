@@ -10,6 +10,7 @@
 #include "Task5/program.h"
 #include "Task6/program.h"
 #include "Task7/main.h"
+#include "Task8/program.h"
 
 using namespace std;
 
@@ -61,6 +62,10 @@ int main(int argc, char *argv[]) {
                 decisionValid = true;
                 Task7::VectorDemo task7;
                 task7.start();
+            } else if ( option == "7" ) {
+                decisionValid = true;
+                Task8::Program task8;
+                task8.start();
             } else if ( ( option == "x" ) || ( option == "X" ) ) {
                 break;
             } else {
