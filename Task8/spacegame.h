@@ -18,6 +18,12 @@ public:
          return (T*) m_entities[ name ];
     }
 
+    template<typename T>
+    void addEntity( T* const entity) {
+        m_entities[ ((Target*) entity)->name() ] = entity;
+        Log::debug( "Created Target " + ((Target*) entity)->name() + " at position " + ((Target*) entity)->position().toString() );
+    }
+
     void removeEntity(Target* entity);
 
 private:

@@ -3,7 +3,7 @@
 
 #include "target.h"
 
-#define DEFAULT_HITPOINTS 100
+#define DEFAULT_HITPOINTS 25
 #define DEFAULT_LASER_COUNT 2
 #define DEFAULT_LAUNCHER_COUNT 0
 

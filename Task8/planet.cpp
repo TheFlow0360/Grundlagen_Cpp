@@ -30,7 +30,7 @@ void Planet::doDamageCalc(unsigned int dmgPoints, Target &attacker)
 std::string Planet::toString() const
 {
     std::stringstream stream;
-    stream << "[Planet] " << m_name << " (Position " << m_position << ")" << std::endl;
+    stream << "[Planet] " << m_name << " (Position " << m_position << ")" << std::endl << std::endl;
     return stream.str();
 }
 

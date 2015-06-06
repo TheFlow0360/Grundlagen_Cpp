@@ -37,8 +37,15 @@
 // Can be damaged by spaceships with a 25% chance of exploding directly (without needing to get the shields to zero).
 //        (- the reactor core can be hit through the exhaust vent. ;) )       
 
+#include <iostream>
+
+#include "../common/consoletools.h"
 #include "program.h"
 #include "spacegame.h"
+#include "target.h"
+#include "planet.h"
+#include "deathstar.h"
+#include "spaceship.h"
 
 namespace Task8 {
 
@@ -47,10 +54,24 @@ namespace Task8 {
 
     void Program::start()
     {
-        //SpaceGame universe;
+        SpaceGame universe;
 
-        //universe.addEntity();
+        Planet* coruscant = universe.addEntity<Planet>( "Coruscant", Position() );
+        Deathstar* deathstar = universe.addEntity<Deathstar>( "WhyTheFuckDoINeedAName", Position( 100, 100, 0 ) );
+        Spaceship* tFighter = universe.addEntity<Spaceship>( "T-Fighter", Position( 95, 95, 0 ) );
+        Spaceship* xWing = new Spaceship( "X-Wing", Position( -200, -150, 20 ), 35, 4, 1);
+        universe.addEntity( xWing );
+        Spaceship* battlecrusier = new Spaceship( "Coruscant battlecruiser", Position( 50, 50, 0 ), 500, 20, 5);
+        universe.addEntity( battlecrusier );
 
+        ConsoleTools::clearScreen();
+        ConsoleTools::printBox( "Battle of Coruscant", "Test scenario for Task 8. Some ships, one planet, different attacks. Much boom, so wow.");
+         ConsoleTools::printBox( "Current situation" );
+        std::cout << *coruscant;
+        std::cout << "defended by: " << std::endl << *battlecrusier << "Current distance: " << coruscant->position().getDistance( battlecrusier->position() ) << std::endl << std::endl;
+        std::cout << "Support incoming: " << std::endl << *xWing << "Current distance: " << coruscant->position().getDistance( xWing->position() ) << std::endl << std::endl;
+        std::cout << "Enemies: " << std::endl << *deathstar << "Current distance: " << coruscant->position().getDistance( deathstar->position() ) << std::endl << std::endl;
+        std::cout << *tFighter << "Current distance: " << coruscant->position().getDistance( tFighter->position() ) << std::endl << std::endl;
     }
 
 }

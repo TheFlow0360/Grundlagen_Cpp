@@ -2,6 +2,7 @@
 
 #include <sstream>
 #include <iostream>
+#include <cmath>
 
 std::string Target::name()
 {
@@ -85,9 +86,9 @@ std::string Position::toString() const
     return stream.str();
 }
 
-double Position::getDistance(Position &pos2) const
+double Position::getDistance(Position const& pos2) const
 {
-    return 0; // TODO
+    return sqrt( pow( this->x - pos2.x, 2 ) + pow( this->y - pos2.y, 2 ) + pow( this->y - pos2.y, 2 ) );
 }
 
 std::ostream& operator<<(std::ostream &stream, Position const& p)

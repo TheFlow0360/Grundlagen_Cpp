@@ -38,8 +38,8 @@ std::string Deathstar::toString() const
 {
     std::stringstream stream;
     stream << "[Death Star] " << m_name << " (Position " << m_position.toString() << ")" << std::endl;
-    stream << "Weapons:\t" << m_lasers << " laser turrets per direction\t1 Superlaser" << std::endl;
-    stream << getHealthBar();
+    stream << "Weapons:" << std::endl << "\t" << m_lasers << " laser turrets per direction" << std::endl << "\t1 Superlaser" << std::endl;
+    stream << getHealthBar() << std::endl;
     return stream.str();
 }
 

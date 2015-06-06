@@ -6,7 +6,7 @@
 #define LASER_DAMAGE 2
 #define LAUNCHER_DAMAGE 5
 
-#define HEALTHBAR_SIZE 40
+#define HEALTHBAR_SIZE 60
 
 struct Position {
     double x;
@@ -17,7 +17,7 @@ struct Position {
     Position(double const x, double const y, double const z) : x(x), y(y), z(z) {}
 
     std::string toString() const;
-    double getDistance(Position& pos2) const;
+    double getDistance(Position const& pos2) const;
 
     friend std::ostream& operator<< (std::ostream& stream, Position const& p);
 };

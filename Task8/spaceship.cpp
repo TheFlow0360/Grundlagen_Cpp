@@ -18,8 +18,8 @@ std::string Spaceship::toString() const
 {
     std::stringstream stream;
     stream << "[Spaceship] " << m_name << " (Position: " << m_position << ")" << std::endl;
-    stream << "Weapons:\t" << m_lasers << " laser cannons\t" << m_launchers << " torpedo launchers" << std::endl;
-    stream << getHealthBar();
+    stream << "Weapons:" << std::endl << "\t" << m_lasers << " laser cannons" << std::endl << "\t" << m_launchers << " torpedo launchers" << std::endl;
+    stream << getHealthBar() << std::endl;
     return stream.str();
 }
 

@@ -34,6 +34,7 @@ int main(int argc, char *argv[]) {
             cout << "4 - Task 5: Extended Dynamic Object List" << endl;
             cout << "5 - Task 6: Expression Tree" << endl;
             cout << "6 - Task 7: Own Vector implementation" << endl;
+            cout << "7 - Task 8: EPIC STAR WARS BATTLE END GAME FANTASY" << endl;
             cout << "X - Exit" << endl << endl;
             cin >> option;
             if ( option == "0" ) {
