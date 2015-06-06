@@ -53,7 +53,7 @@ void PlanetTest::test_damage_Success()
 void PlanetTest::test_streamOut_Success()
 {
     std::stringstream testStream;
-    testStream << m_sut;
+    testStream << *m_sut;
     std::string out = testStream.str();
     QVERIFY2( out.size() != 0, "Output stream is empty" );
     QVERIFY2( out.find( m_sut->name() ) != std::string::npos, "Name not included in output stream" );

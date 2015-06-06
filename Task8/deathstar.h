@@ -8,10 +8,11 @@
 class Deathstar : public Spaceship
 {
 public:
-    Deathstar(std::string name, Position pos) : Spaceship( name, pos, DEATHSTAR_HITPOINTS ) {}
+    Deathstar(std::string name, Position pos) : Spaceship( name, pos, DEATHSTAR_HITPOINTS, 50, 0 ) {}
 
-    virtual void attack( Target& target );
     virtual void doDamageCalc( unsigned int dmgPoints, Target& attacker );
+
+    virtual std::string toString() const;
 protected:
     virtual void explode();
 };

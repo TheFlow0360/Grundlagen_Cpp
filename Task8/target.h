@@ -3,6 +3,11 @@
 
 #include <string>
 
+#define LASER_DAMAGE 2
+#define LAUNCHER_DAMAGE 5
+
+#define HEALTHBAR_SIZE 40
+
 struct Position {
     double x;
     double y;
@@ -13,12 +18,14 @@ struct Position {
 
     std::string toString() const;
     double getDistance(Position& pos2) const;
+
+    friend std::ostream& operator<< (std::ostream& stream, Position const& p);
 };
 
 class Target
 {
 public:
-    Target(std::string name, Position pos, unsigned int const hitpoints) : m_name(name), m_position( pos ), m_hitpoints( hitpoints ) {}
+    Target(std::string name, Position pos, unsigned int const hitpoints) : m_name(name), m_position( pos ), m_hitpoints( hitpoints ), m_maxHitpoints( hitpoints ) {}
 
     virtual std::string name();
     Position position() const;
@@ -38,12 +45,12 @@ protected:
     std::string const m_name;
     Position m_position;
     unsigned int m_hitpoints;
+    unsigned int const m_maxHitpoints;
 
-    virtual void explode() = 0;
+    virtual void explode();
+    std::string getHealthBar() const;
+
+    friend std::ostream& operator<< (std::ostream& stream, Target const& t);
 };
-
-std::ostream& operator<< (std::ostream& stream, const Position& p);
-
-std::ostream& operator<< (std::ostream& stream, const Target& t);
 
 #endif // TARGET_H

@@ -34,31 +34,55 @@ void Target::damage(unsigned int dmgPoints, Target &attacker)
 void Target::doDamageCalc(unsigned int dmgPoints, Target &attacker)
 {
     if ( dmgPoints > 0 ) {
-        std::cout << name() << " gets hit by the attack of " << attacker.name() << " and takes " << dmgPoints << " points of damage.";
+        std::cout << name() << " gets hit by the attack of " << attacker.name() << " and takes " << dmgPoints << " points of damage." << std::endl;
     if ( dmgPoints >= m_hitpoints )
         m_hitpoints = 0;
     else
         m_hitpoints -= dmgPoints;
 
     } else {
-        std::cout << name() << " is unaffected by the attack of " << attacker.name() << ".";
+        std::cout << name() << " is unaffected by the attack of " << attacker.name() << "." << std::endl;
     }
 }
 
 bool Target::isDestroyed() const
 {
-    return m_hitpoints > 0;
+    return m_hitpoints == 0;
 }
+
+void Target::explode()
+{
+    m_hitpoints = 0;  // just to be sure
+}
+
+std::string Target::getHealthBar() const
+{
+    std::stringstream stream;
+    stream << "[";
+    unsigned int perc = ( HEALTHBAR_SIZE * m_hitpoints ) / m_maxHitpoints;
+    for ( unsigned int i = 0; i < perc; i++ )
+        stream << "#";
+    for ( unsigned int i = perc; i < HEALTHBAR_SIZE ; i++ )
+        stream << " ";
+    stream << "]" << std::endl << "Hitpoints: " << m_hitpoints << " / " << m_maxHitpoints << std::endl;
+    return stream.str();
+}
+
 unsigned int Target::hitpoints() const
 {
     return m_hitpoints;
 }
 
+std::ostream& operator<<(std::ostream& stream, Target const& t)
+{
+    return stream << t.toString();
+}
+
 std::string Position::toString() const
 {
-    std::stringstream str;
-    str << "[" << this->x << ", " << this->y << ", " << this->z << "]";
-    return str.str();
+    std::stringstream stream;
+    stream << "[" << this->x << ", " << this->y << ", " << this->z << "]";
+    return stream.str();
 }
 
 double Position::getDistance(Position &pos2) const
@@ -66,14 +90,7 @@ double Position::getDistance(Position &pos2) const
     return 0; // TODO
 }
 
-
-std::ostream &operator<<(std::ostream &stream, const Position &p)
+std::ostream& operator<<(std::ostream &stream, Position const& p)
 {
     return stream << p.toString();
-}
-
-
-std::ostream &operator<<(std::ostream &stream, const Target &t)
-{
-    return stream << t.toString();
 }
