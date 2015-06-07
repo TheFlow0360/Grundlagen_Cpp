@@ -16,6 +16,8 @@ Position Target::position() const
 
 void Target::setPosition(const Position &position)
 {
+    if ( isDestroyed() )
+        return;
     m_position.x = position.x;
     m_position.y = position.y;
     m_position.z = position.z;

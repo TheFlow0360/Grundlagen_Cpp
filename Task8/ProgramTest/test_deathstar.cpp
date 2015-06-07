@@ -14,12 +14,21 @@ void DeathstarTest::cleanup()
     m_testEnv->removeEntity( m_sut );
 }
 
-void DeathstarTest::test_setPosition_Success()
+void DeathstarTest::test_setPosition_normal_Success()
 {
     QCOMPARE( m_sut->position().toString(), m_testPosition.toString() );
     Position newPos;
     m_sut->setPosition( newPos );
     QCOMPARE( m_sut->position().toString(), newPos.toString() );
+}
+
+void DeathstarTest::test_setPosition_destroyed_Failure()
+{
+    QCOMPARE( m_sut->position().toString(), m_testPosition.toString() );
+    Position newPos;
+    m_sut->doDamageCalc( 1000000000, *m_sut );
+    m_sut->setPosition( newPos );
+    QCOMPARE( m_sut->position().toString(), m_testPosition.toString() );
 }
 
 void DeathstarTest::test_attack_planet_Destroyed()
@@ -28,8 +37,8 @@ void DeathstarTest::test_attack_planet_Destroyed()
 
     m_sut->attack( *planet );
 
-    QVERIFY2( planet->isDestroyed(), "Planet has hitpoints left after attack from the Death Star" );
-    QVERIFY2( planet->hitpoints() == 0, "Planet has hitpoints left after attack from the Death Star" );
+    QVERIFY2( planet->hitpoints() == 0, "After Death Star attack the planet has hitpoints left" );
+    QVERIFY2( planet->isDestroyed(), "Death Star atatck didn't destroy a planet" );
 }
 
 void DeathstarTest::test_attack_other_Success()
@@ -44,16 +53,21 @@ void DeathstarTest::test_attack_other_Success()
 
 void DeathstarTest::test_damage_normal_MinorDamageOrEffect()
 {
-    Spaceship* aWing = new Spaceship( "A-Wing", Position(), 30, 2, 0 );
+    unsigned int const laserCount = 2;
+    unsigned int const launcherCount = 0;
+
+    Spaceship* aWing = new Spaceship( "A-Wing", Position(), 30, laserCount, launcherCount );
     m_testEnv->addEntity( aWing );
 
-    for ( unsigned int i = 0; i < 100; i++ ) {
+    unsigned int const retries = 100;
+
+    for ( unsigned int i = 0; i < retries; i++ ) {
         aWing->attack( *m_sut );
     }
 
     m_testEnv->removeEntity( aWing );
 
-    QVERIFY2( m_sut->hitpoints() == ( DEATHSTAR_HITPOINTS - ( 200 * LASER_DAMAGE ) ), "Minor damage to Death Star caused incorrect hitpoints" );
+    QVERIFY2( m_sut->hitpoints() == ( DEATHSTAR_HITPOINTS - ( retries * laserCount * LASER_DAMAGE + retries * launcherCount * LAUNCHER_DAMAGE ) ), "Minor damage to Death Star caused incorrect hitpoints" );
     QVERIFY2( !m_sut->isDestroyed(), "Minor damage destroyed the Death Star" );
 
     Spaceship* yWing = new Spaceship( "Y-Wing", Position(), 50, 1, 2 );

@@ -38,9 +38,13 @@ private Q_SLOTS:
     void init();
     void cleanup();
 
-    //void test_setPosition_Success();
-    //void testSpaceship();
-    //void testDeathstar();
+    void test_setPosition_normal_Success();
+    void test_setPosition_destroyed_Failure();
+    void test_attack_planet_Failure();
+    void test_attack_other_Success();
+    void test_damage_minor_Success();
+    void test_damage_greater_Destroyed();
+    void test_streamOut_Success();
 };
 
 

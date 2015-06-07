@@ -26,7 +26,7 @@ void Deathstar::doDamageCalc(unsigned int dmgPoints, Target &attacker)
             }
         }
         if ( ( dmgPoints > 10 ) && ( m_lasers > 0 ) && ( ( randDist(randGen) % 3 ) == 0 ) ) {
-            std::cout << " and takes destroyes a laser turret! " << m_name << " takes " << dmgPoints << " points of damage." << std::endl;
+            std::cout << " and destroyes a laser turret! " << m_name << " takes " << dmgPoints << " points of damage." << std::endl;
             m_lasers--;
         } else {
             std::cout << " and takes " << dmgPoints << " points of damage." << std::endl;

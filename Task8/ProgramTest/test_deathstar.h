@@ -37,7 +37,8 @@ private Q_SLOTS:
     void init();
     void cleanup();
 
-    void test_setPosition_Success();
+    void test_setPosition_normal_Success();
+    void test_setPosition_destroyed_Failure();
     void test_attack_planet_Destroyed();
     void test_attack_other_Success();
     void test_damage_normal_MinorDamageOrEffect();
