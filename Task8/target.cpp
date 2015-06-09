@@ -4,6 +4,8 @@
 #include <iostream>
 #include <cmath>
 
+#include "../common/log.h"
+
 std::string Target::name()
 {
     return m_name;
@@ -16,8 +18,10 @@ Position Target::position() const
 
 void Target::setPosition(const Position &position)
 {
-    if ( isDestroyed() )
+    if ( isDestroyed() ) {
+        Log::debug( "Tried to move destroyed target " + m_name );
         return;
+    }
     m_position.x = position.x;
     m_position.y = position.y;
     m_position.z = position.z;

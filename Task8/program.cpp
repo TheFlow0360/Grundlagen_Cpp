@@ -47,6 +47,8 @@
 #include "deathstar.h"
 #include "spaceship.h"
 
+using namespace std;
+
 namespace Task8 {
 
     Program::Program()
@@ -54,6 +56,7 @@ namespace Task8 {
 
     void Program::start()
     {
+        BorderSymbols infoBorder( '|', '=', CornerSymbols( '/', '\\', '\\', '/' ) );
         SpaceGame universe;
 
         Planet* coruscant = universe.addEntity<Planet>( "Coruscant", Position() );
@@ -66,12 +69,16 @@ namespace Task8 {
 
         ConsoleTools::clearScreen();
         ConsoleTools::printBox( "Battle of Coruscant", "Test scenario for Task 8. Some ships, one planet, different attacks. Much boom, so wow.");
-         ConsoleTools::printBox( "Current situation" );
-        std::cout << *coruscant;
-        std::cout << "defended by: " << std::endl << *battlecrusier << "Current distance: " << coruscant->position().getDistance( battlecrusier->position() ) << std::endl << std::endl;
-        std::cout << "Support incoming: " << std::endl << *xWing << "Current distance: " << coruscant->position().getDistance( xWing->position() ) << std::endl << std::endl;
-        std::cout << "Enemies: " << std::endl << *deathstar << "Current distance: " << coruscant->position().getDistance( deathstar->position() ) << std::endl << std::endl;
-        std::cout << *tFighter << "Current distance: " << coruscant->position().getDistance( tFighter->position() ) << std::endl << std::endl;
+        ConsoleTools::printBox( "Current situation", infoBorder );
+        cout << *coruscant;
+        cout << "defended by: " << endl << *battlecrusier << "Current distance: " << coruscant->position().getDistance( battlecrusier->position() ) << endl << endl;
+        cout << "Support incoming: " << endl << *xWing << "Current distance: " << coruscant->position().getDistance( xWing->position() ) << endl << endl;
+        cout << "Enemies: " << endl << *deathstar << "Current distance: " << coruscant->position().getDistance( deathstar->position() ) << endl << endl;
+        cout << *tFighter << "Current distance: " << coruscant->position().getDistance( tFighter->position() ) << endl << endl;
+
+        ConsoleTools::printBox( "Fight", infoBorder );
+
+
     }
 
 }
