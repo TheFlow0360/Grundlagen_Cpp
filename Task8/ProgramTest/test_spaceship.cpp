@@ -43,13 +43,28 @@ void SpaceshipTest::test_attack_planet_Failure()
 
 }
 
+void SpaceshipTest::test_attack_selfDestroyed_Failure()
+{
+    Spaceship* spaceship = m_testEnv->addEntity<Spaceship>( "Spaceship", Position() );
+
+    m_sut->doDamageCalc( 1000000000, *m_sut );
+    m_sut->attack( *spaceship );
+
+    QVERIFY2( spaceship->hitpoints() == DEFAULT_HITPOINTS, "Spaceship was able to attack though destroyed" );
+    QVERIFY2( !spaceship->isDestroyed(), "Spaceship was able to attack though destroyed" );
+
+    m_testEnv->removeEntity( spaceship );
+
+
+}
+
 void SpaceshipTest::test_attack_other_Success()
 {
     Spaceship* spaceship = m_testEnv->addEntity<Spaceship>( "Spaceship", Position() );
 
     m_sut->attack( *spaceship );
 
-    QVERIFY2( spaceship->hitpoints() == ( DEFAULT_HITPOINTS - ( DEFAULT_LASER_COUNT * LASER_DAMAGE + DEFAULT_LAUNCHER_COUNT * LAUNCHER_DAMAGE ) ), "Spaceship damaged a Planet" );
+    QVERIFY2( spaceship->hitpoints() == ( DEFAULT_HITPOINTS - ( DEFAULT_LASER_COUNT * LASER_DAMAGE + DEFAULT_LAUNCHER_COUNT * LAUNCHER_DAMAGE ) ), "Spaceship damaged incorrect" );
 
     m_testEnv->removeEntity( spaceship );
 }

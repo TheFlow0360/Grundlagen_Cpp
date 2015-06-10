@@ -2,9 +2,15 @@
 
 #include <sstream>
 #include <iostream>
+#include "../common/log.h"
+
 
 void Spaceship::attack(Target &target)
 {
+    if ( isDestroyed() ) {
+        Log::debug( m_name + " tried to attack, but it's already destroyed." );
+
+    }
     std::cout << m_name << " attacks " << target.name() << "." << std::endl;
     target.damage( m_lasers * LASER_DAMAGE + m_launchers * LAUNCHER_DAMAGE, *this );
 }

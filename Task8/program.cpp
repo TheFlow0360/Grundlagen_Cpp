@@ -64,21 +64,28 @@ namespace Task8 {
         Spaceship* tFighter = universe.addEntity<Spaceship>( "T-Fighter", Position( 95, 95, 0 ) );
         Spaceship* xWing = new Spaceship( "X-Wing", Position( -200, -150, 20 ), 35, 4, 1);
         universe.addEntity( xWing );
-        Spaceship* battlecrusier = new Spaceship( "Coruscant battlecruiser", Position( 50, 50, 0 ), 500, 20, 5);
-        universe.addEntity( battlecrusier );
+        Spaceship* battlecruiser = new Spaceship( "Coruscant battlecruiser", Position( 50, 50, 0 ), 500, 20, 5);
+        universe.addEntity( battlecruiser );
 
         ConsoleTools::clearScreen();
         ConsoleTools::printBox( "Battle of Coruscant", "Test scenario for Task 8. Some ships, one planet, different attacks. Much boom, so wow.");
         ConsoleTools::printBox( "Current situation", infoBorder );
         cout << *coruscant;
-        cout << "defended by: " << endl << *battlecrusier << "Current distance: " << coruscant->position().getDistance( battlecrusier->position() ) << endl << endl;
+        cout << "defended by: " << endl << *battlecruiser << "Current distance: " << coruscant->position().getDistance( battlecruiser->position() ) << endl << endl;
         cout << "Support incoming: " << endl << *xWing << "Current distance: " << coruscant->position().getDistance( xWing->position() ) << endl << endl;
         cout << "Enemies: " << endl << *deathstar << "Current distance: " << coruscant->position().getDistance( deathstar->position() ) << endl << endl;
         cout << *tFighter << "Current distance: " << coruscant->position().getDistance( tFighter->position() ) << endl << endl;
 
         ConsoleTools::printBox( "Fight", infoBorder );
 
-
+        while ( !tFighter->isDestroyed() && !battlecruiser->isDestroyed() ) {
+            tFighter->attack( *battlecruiser );
+            battlecruiser->attack( *tFighter );
+        }
+        while ( !deathstar->isDestroyed() && !battlecruiser->isDestroyed() ) {
+            battlecruiser->attack( *deathstar );
+            deathstar->attack( *battlecruiser );
+        }
     }
 
 }
