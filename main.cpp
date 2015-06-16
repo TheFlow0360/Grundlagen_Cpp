@@ -11,6 +11,7 @@
 #include "Task6/program.h"
 #include "Task7/main.h"
 #include "Task8/program.h"
+#include "Task9/program.h"
 
 using namespace std;
 
@@ -35,6 +36,7 @@ int main(int argc, char *argv[]) {
             cout << "5 - Task 6: Expression Tree" << endl;
             cout << "6 - Task 7: Own Vector implementation" << endl;
             cout << "7 - Task 8: EPIC STAR WARS BATTLE END GAME FANTASY" << endl;
+            cout << "8 - Task 9: Logger" << endl;
             cout << "X - Exit" << endl << endl;
             cin >> option;
             if ( option == "0" ) {
@@ -69,6 +71,10 @@ int main(int argc, char *argv[]) {
                 decisionValid = true;
                 Task8::Program task8;
                 task8.start();
+            } else if ( option == "8" ) {
+                decisionValid = true;
+                Task9::Program task9;
+                task9.start();
             } else if ( ( option == "x" ) || ( option == "X" ) ) {
                 break;
             } else {

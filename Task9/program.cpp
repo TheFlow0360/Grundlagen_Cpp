@@ -12,8 +12,8 @@
 class UltimativeNotifier
 {
 public:
-    UltimativeNotifier() { /*LOG_LVL2("Created important static object.");*/ }
-    ~UltimativeNotifier() { /*LOG_LVL2("Destroyed important static object.");*/ }
+    UltimativeNotifier() { LOG_LVL2("Created important static object."); }
+    ~UltimativeNotifier() { LOG_LVL2("Destroyed important static object."); }
 };
 
 /// \brief Use a static instance to demonstrate that the logger is active from
@@ -22,13 +22,13 @@ static UltimativeNotifier g_notify;
 
 
 /// \brief Static testing if the singleton could be copied.
-//static_assert( !std::is_copy_constructible<Logger>::value, "Your Logger can still be copied by Copy-Ctor" );
+static_assert( !std::is_copy_constructible<Logger>::value, "Your Logger can still be copied by Copy-Ctor" );
 // The second test here is buggy in v110 and v120
 //static_assert( !std::is_copy_assignable<Logger>::value, "Your Logger can still be copied by operator=()" );
 
 void Task9::Program::start()
 {
-    /*
+
     LOG_LVL1("Reached entry point.");
 
 	LOG_LVL0("Last message before policy registration.");
@@ -44,7 +44,6 @@ void Task9::Program::start()
 
 	LOG_LVL1("Reached end of program.");
 
-    */
 
 	// If you did everything correct you should get a file log.txt with the
 	// following content (up to formation):

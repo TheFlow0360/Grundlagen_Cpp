@@ -1,5 +1,5 @@
-#ifndef PROGRAMTASK6_H
-#define PROGRAMTASK6_H
+#ifndef PROGRAMTASK9_H
+#define PROGRAMTASK9_H
 
 #include "../common/taskbase.h"
 
@@ -15,4 +15,4 @@ namespace Task9 {
 
 }
 
-#endif // PROGRAMTASK6_H
+#endif // PROGRAMTASK9_H

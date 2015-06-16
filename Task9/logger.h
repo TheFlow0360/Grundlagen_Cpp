@@ -18,19 +18,18 @@ public:
 	/// \param [in] line The line of code where the log message is sent.
 	///		Use __LINE__ to get this information.
 	/// \param [in] message A problem specific message text.
-	// TODO: Implement this method
-	// Hint: to get a nice time string use the utility function in logger.cpp
 	void write(const std::string& file, long line, const std::string& message);
 
-	// TODO: Implement this method
 	void registerPolicy(std::unique_ptr<Policy> _policy);
 
-	// TODO: Singleton access
-	static Logger& instance();
+    static Logger& instance();
 private:
-	// TODO: Hide constructors...
+    Logger() {}
+    Logger(Logger&) {}
 
-	// TODO: somehow collect the policies
+    static std::unique_ptr<Logger> f_instance;
+
+    std::vector<std::unique_ptr<Policy>> m_policies;
 
 	/// \brief Everything reported so far.
 	/// \details This allows to write out messages even before a policy is added.
