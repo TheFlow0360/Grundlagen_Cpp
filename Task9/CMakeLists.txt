@@ -1,0 +1,17 @@
+set(SOURCE
+    ${SOURCE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/program.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/consolepolicy.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/filepolicy.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/logger.cpp
+    PARENT_SCOPE
+)
+set(HEADERS
+    ${HEADERS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/program.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/consolepolicy.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/filepolicy.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/logger.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/policy.h
+    PARENT_SCOPE
+)

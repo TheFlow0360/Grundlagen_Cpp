@@ -13,5 +13,5 @@ add_subdirectory("${PROJECT_SOURCE_DIR}/Task5")
 add_subdirectory("${PROJECT_SOURCE_DIR}/Task6")
 add_subdirectory("${PROJECT_SOURCE_DIR}/Task7")
 add_subdirectory("${PROJECT_SOURCE_DIR}/Task8")
+add_subdirectory("${PROJECT_SOURCE_DIR}/Task9")
 add_executable(${PROJECT_NAME} ${SOURCE} ${HEADERS})
-
