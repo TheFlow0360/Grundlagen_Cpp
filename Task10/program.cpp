@@ -39,6 +39,10 @@ private:
 int Watcher::m_instances;
 int Watcher::m_numCopyConstructed;
 
+Task10::Program::Program()
+{
+}
+
 void Task10::Program::start()
 {
 	// Guaranteed by the standard
@@ -57,30 +61,30 @@ void Task10::Program::start()
 		// Copy the array and check its consistency later
 		HybridArray<Watcher, 8> b(a);
 
-		// Just do some more random work
-		a.popBack();
-		a.pushBack( Watcher(11) );
-		assert(a[9].me() == 11 && "The order of elements is wrong or the data is corrupted.");
-		assert(Watcher::instances() == 20 && "a and b should contain 10 instances each. Memory leak?");
-		for(int i = 0; i < 9; ++i )
-			assert(a[i].me() == i && "The order of elements is wrong or the data is corrupted.");
+        // Just do some more random work
+        a.popBack();
+        a.pushBack( Watcher(11) );
+        assert(a[9].me() == 11 && "The order of elements is wrong or the data is corrupted.");
+        assert(Watcher::instances() == 20 && "a and b should contain 10 instances each. Memory leak?");
+        for(int i = 0; i < 9; ++i )
+            assert(a[i].me() == i && "The order of elements is wrong or the data is corrupted.");
 	
-		// Write access
-		a[0].me(12);
+        // Write access
+        a[0].me(12);
 
-		// Test the pruning
-		a.popBack();
-		a.popBack();
-		a.reserve(0);
-		assert(a.capacity() == 8 && a.size() == 8);
-		for(int i = 1; i < 8; ++i )
-			assert(a[i].me() == i && "The order of elements is wrong or the data is corrupted.");
-		assert(a[0].me() == 12 && "Probably the write access did not succeed or the array was damaged afterwards.");
+        // Test the pruning
+        a.popBack();
+        a.popBack();
+        a.reserve(0);
+        assert(a.capacity() == 8 && a.size() == 8);
+        for(int i = 1; i < 8; ++i )
+            assert(a[i].me() == i && "The order of elements is wrong or the data is corrupted.");
+        assert(a[0].me() == 12 && "Probably the write access did not succeed or the array was damaged afterwards.");
 
-		// Test if the old copy is untouched
-		for(int i = 0; i < 10; ++i )
-			assert(b[i].me() == i && "The order of elements is wrong or the data is corrupted.");
-	}
+        // Test if the old copy is untouched
+        for(int i = 0; i < 10; ++i )
+            assert(b[i].me() == i && "The order of elements is wrong or the data is corrupted.");
+    }
 	assert(Watcher::instances() == 0 && "Your array implementation has memory leaks.");
 
 	{

@@ -22,40 +22,29 @@ public:
 
 	/// \brief Standard: create this array with capacity n and size 0.
 	/// \details m_data is set to the local storage.
-	/// TODO: Write standard CTor which sets m_data, m_capacity and m_size
-	HybridArray();
+    HybridArray();
 
 	/// \brief Create a dynamic array with preallocated space. Probably
 	///		this disables the advantage of 'hybrid':
 	///	\param [in] _capacity Minimum capacity which should be allocated.
-	///		The allocated capacity must be ´max(_capacity, n)´. So there is
+    ///		The allocated capacity must be max(_capacity, n). So there is
 	///		never less than the already existing internal memory block.
-	/// TODO: Write custom CTor which sets m_data, m_capacity and m_size.
-	///		You might need to allocate memory with malloc!
 	HybridArray(unsigned _capacity);
 
 	/// \brief Copy construction (deep).
-	/// TODO: Write copy constructor. Use placement new with copy CTor of ElemType
-	///		to create copies of the data (not =).
-	///		Reason: Any implementation of = must free the old stuff on the left
-	///		side before assigning the new one. But during construction there is
-	///		nothing to be deleted (left side contains uninitialized memory)!
 	HybridArray(const HybridArray<T,n>& _other);
 
 	/// \brief Calls destructor for all contained elements.
-	/// TODO: Write destructor.
 	~HybridArray();
 
 	/// \brief Deep copying assignment
-	/// TODO: Write assignment operator for this array type. Keep in mind: delete
-	///		the old content first (otherwise memory leaks)
 	HybridArray<ElemType,n>& operator = (const HybridArray<T,n>& _other);
 
 	/// \brief Write-array access.
-	/// TODO: Implement [] operator with write access (non const)
+    ElemType& operator[](unsigned int const pos) { return m_data[ pos ]; }
 
 	/// \brief Read-array access.
-	/// TODO: Implement [] operator with read access (const)
+    ElemType& operator[](unsigned int const pos) const  { return m_data[ pos ]; }
 
 	/// \brief Enlarge or prune the memory.
 	/// \details This function is already implemented. You can have a look
@@ -68,12 +57,9 @@ public:
 
 	/// \brief Insert an element copy at the end of the array.
 	/// \details This might cause a resize with costs O(n).
-	/// TODO: Implement (use placement new to copy the element to the array,
-	///	for a reason see Copy-CTor above).
 	const ElemType& pushBack(const ElemType& _element);
 
 	/// \brief Delete the last element
-	/// TODO: Implement
 	void popBack();
 
 	unsigned size() const		{ return m_size; }
@@ -92,6 +78,8 @@ protected:
 	unsigned m_size;		///< Current number of elements
 
 	unsigned char m_localStorage[sizeof(T)*n];	///< The local storage on stack or in object heap space.
+private:
+    void deepCopy(const HybridArray<T, n> &_other);
 };
 
 
@@ -103,6 +91,87 @@ protected:
 //  HybridArray Implementation											 //
 // ********************************************************************* //
 
+template<typename T, unsigned n>
+HybridArray<T,n>::HybridArray() : m_capacity(n), m_size(0) {
+    m_data = reinterpret_cast<ElemType*>( &m_localStorage );
+    for ( unsigned int i = 0; i < n; i++ ) {
+        m_data[ i ] = 0;
+    }
+}
+
+template<typename T, unsigned n>
+HybridArray<T,n>::HybridArray(unsigned _capacity) : m_capacity(0), m_size(0) {
+    if ( _capacity > n ) {
+        reserve( _capacity );
+    } else {
+        m_data = reinterpret_cast<ElemType*>( &m_localStorage );
+        m_capacity = n;
+        for ( unsigned int i = 0; i < n; i++ ) {
+            m_data[ i ] = 0;
+        }
+    }
+}
+
+template<typename T, unsigned n>
+HybridArray<T,n>::HybridArray(const HybridArray<T, n> &_other) : m_capacity(0), m_size(0) {
+    if ( _other.capacity() > n ) {
+        reserve( _other.capacity() );
+        deepCopy( _other );
+    } else {
+        m_data = reinterpret_cast<ElemType*>( &m_localStorage );
+        m_capacity = n;
+        for ( unsigned int i = 0; i < n; i++ ) {
+            m_data[ i ] = 0;
+        }
+        deepCopy( _other );
+    }
+}
+
+template<typename T, unsigned n>
+HybridArray<T,n>::~HybridArray()
+{
+    for ( unsigned int i = 0; i < m_size; i++ ) {
+         m_data[ i ].~ElemType();
+    }
+    free( m_data );
+}
+
+template<typename T, unsigned n>
+HybridArray<T, n> &HybridArray<T, n>::operator =(const HybridArray<T, n> &_other)
+{
+    for ( unsigned int i = 0; i < m_size; i++ ) {
+         m_data[ i ].~ElemType();
+    }
+    m_size = 0;
+    reserve( _other.capacity() );
+
+    deepCopy( _other );
+    return *this;
+}
+
+template<typename T, unsigned n>
+void HybridArray<T,n>::deepCopy(const HybridArray<T, n> &_other)
+{
+    for ( unsigned int i = 0; i < _other.size(); i++ ) {
+        new ( &m_data[ i ] ) ElemType( _other[ i ] );
+    }
+    m_size = _other.size();
+}
+
+template<typename T, unsigned n>
+T const& HybridArray<T,n>::pushBack(const HybridArray::ElemType &_element)
+{
+    if ( m_size >= m_capacity ) {
+        reserve( 2 * m_capacity  );
+    }
+    return *( new ( &m_data[ m_size++ ] ) ElemType( _element ) );
+}
+
+template<typename T, unsigned n>
+void HybridArray<T,n>::popBack()
+{
+    m_data[ m_size-- - 1 ].~ElemType();
+}
 
 // ********************************************************************* //
 template<typename T, unsigned n>
@@ -134,5 +203,5 @@ void HybridArray<T,n>::reserve(unsigned _capacity)
 
 		if( oldCapacity > n )
 			free(oldData);
-	}
+    }
 }

@@ -38,6 +38,7 @@ int main(int argc, char *argv[]) {
             cout << "6 - Task 7: Own Vector implementation" << endl;
             cout << "7 - Task 8: EPIC STAR WARS BATTLE END GAME FANTASY" << endl;
             cout << "8 - Task 9: Logger" << endl;
+            cout << "9 - Task 10: Hybrid Array" << endl;
             cout << "X - Exit" << endl << endl;
             cin >> option;
             if ( option == "0" ) {
