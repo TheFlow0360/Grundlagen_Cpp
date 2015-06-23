@@ -12,6 +12,7 @@
 #include "Task7/main.h"
 #include "Task8/program.h"
 #include "Task9/program.h"
+#include "Task10/program.h"
 
 using namespace std;
 
@@ -75,6 +76,10 @@ int main(int argc, char *argv[]) {
                 decisionValid = true;
                 Task9::Program task9;
                 task9.start();
+            } else if ( option == "9" ) {
+                decisionValid = true;
+                Task10::Program task10;
+                task10.start();
             } else if ( ( option == "x" ) || ( option == "X" ) ) {
                 break;
             } else {

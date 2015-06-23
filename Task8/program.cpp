@@ -79,11 +79,16 @@ namespace Task8 {
         ConsoleTools::printBox( "Fight", infoBorder );
 
         while ( !tFighter->isDestroyed() && !battlecruiser->isDestroyed() ) {
+            cout << endl;
             tFighter->attack( *battlecruiser );
+            cout << endl;
             battlecruiser->attack( *tFighter );
         }
+        cout << endl;
         while ( !deathstar->isDestroyed() && !battlecruiser->isDestroyed() ) {
+            cout << endl;
             battlecruiser->attack( *deathstar );
+            cout << endl;
             deathstar->attack( *battlecruiser );
         }
     }

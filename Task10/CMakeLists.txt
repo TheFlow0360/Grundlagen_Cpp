@@ -1,0 +1,11 @@
+set(SOURCE
+    ${SOURCE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/program.cpp
+    PARENT_SCOPE
+)
+set(HEADERS
+    ${HEADERS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/program.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/hybridarray.h
+    PARENT_SCOPE
+)
