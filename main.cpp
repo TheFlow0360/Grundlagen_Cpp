@@ -3,15 +3,15 @@
 #include <ctime>
 
 #include "common/consoletools.h"
-#include "Task1/adventure.h"
-#include "Task2/scopedemo.h"
-#include "Task3/dynlistdemo.h"
-#include "Task4/program.h"
-#include "Task5/program.h"
-#include "Task6/program.h"
-#include "Task7/main.h"
-#include "Task8/program.h"
-#include "Task9/program.h"
+#include "Task01/adventure.h"
+#include "Task02/scopedemo.h"
+#include "Task03/dynlistdemo.h"
+#include "Task04/program.h"
+#include "Task05/program.h"
+#include "Task06/program.h"
+#include "Task07/main.h"
+#include "Task08/program.h"
+#include "Task09/program.h"
 #include "Task10/program.h"
 
 using namespace std;
