@@ -1,0 +1,15 @@
+set(SOURCE
+    ${SOURCE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/fleet.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/spaceshipfactory.cpp
+    PARENT_SCOPE
+)
+set(HEADERS
+    ${HEADERS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/main.h
+	${CMAKE_CURRENT_SOURCE_DIR}/fleet.h
+	${CMAKE_CURRENT_SOURCE_DIR}/spaceshipfactory.h
+	${CMAKE_CURRENT_SOURCE_DIR}/spaceships.h
+    PARENT_SCOPE
+)

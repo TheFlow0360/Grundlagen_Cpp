@@ -1,0 +1,7 @@
+DeathStar 80.148
+Destroyer 51
+LargeDestroyer 9002
+TieFighter Spock
+TieFighter Admiral Ackbar
+TieFighter Grand Moff Dunhausen
+TieFighter Saruman
