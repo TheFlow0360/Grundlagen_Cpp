@@ -6,25 +6,45 @@
 
 void Task11::AbstractFleetFactory::start()
 {
-	// Register SpaceShips by using the SpaceShipFactory::getInstance().registerSpaceShipType with lambda functions.
 
-	// TODO: Register TieFighter with SpaceShipFactory::getInstance().registerSpaceShipType
-	// The string parameter contains the pilot.
-	
-	// TODO: Register DeathStar
-	// The string parameter has to be interpreted as a float, determining its buildProgress
-
-	// TODO: Register Destroyer
-	// The string parameter has to be interpreted as an int, determining the number of lasers
-	// Note that the appropriate parameterized instance of the "Destroyer"-class should be created.
-	
-	// TODO: Register LargeDestroyer
-	// The string parameter has to be interpreted as an int, determining the number of lasers.
-	// Note that the appropriate parameterized instance of the "Destroyer"-class should be created.
+    SpaceShipFactory::getInstance().registerSpaceShipType( "DeathStar", []( const std::string& param ) -> std::shared_ptr<SpaceShip>
+    {
+        char* e;
+        float progress = std::strtod( param.c_str(), &e );
+        if ( *e != 0 )
+            return nullptr;
+        std::shared_ptr<SpaceShip> ship( new DeathStar( progress ) );
+        return ship;
+    } );
+    SpaceShipFactory::getInstance().registerSpaceShipType( "Destroyer", []( const std::string& param ) -> std::shared_ptr<SpaceShip>
+    {
+        char* e;
+        int laserCount = std::strtod( param.c_str(), &e );
+        if ( *e != 0 )
+            return nullptr;
+        std::shared_ptr<SpaceShip> ship( new Destroyer( false, laserCount ) );
+        return ship;
+    } );
+    SpaceShipFactory::getInstance().registerSpaceShipType( "LargeDestroyer", []( const std::string& param ) -> std::shared_ptr<SpaceShip>
+    {
+        char* e;
+        int laserCount = std::strtod( param.c_str(), &e );
+        if ( *e != 0 )
+            return nullptr;
+        std::shared_ptr<SpaceShip> ship( new Destroyer( true, laserCount ) );
+        return ship;
+    } );
+    SpaceShipFactory::getInstance().registerSpaceShipType( "TieFighter", []( const std::string& param ) -> std::shared_ptr<SpaceShip>
+    {
+        std::shared_ptr<SpaceShip> ship( new TieFighter( param ) );
+        return ship;
+    } );
 
 
 	// Loads fleet from file
     Fleet imperialFleet("imperialships.txt");
+
+    (void)imperialFleet;
 }
 
 Task11::AbstractFleetFactory::AbstractFleetFactory()

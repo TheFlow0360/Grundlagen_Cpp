@@ -13,6 +13,7 @@
 #include "Task08/program.h"
 #include "Task09/program.h"
 #include "Task10/program.h"
+#include "Task11/main.h"
 
 using namespace std;
 
@@ -29,16 +30,17 @@ int main(int argc, char *argv[]) {
         bool decisionValid = false;
         while ( !decisionValid ) {
             cout << "Choose action..." << endl;
-            cout << "0 - Task 1: Adventure" << endl;
-            cout << "1 - Task 2: Scope Time Measurement" << endl;
-            cout << "2 - Task 3: Dynamic Object List" << endl;
-            cout << "3 - Task 4: Fixed random code" << endl;
-            cout << "4 - Task 5: Extended Dynamic Object List" << endl;
-            cout << "5 - Task 6: Expression Tree" << endl;
-            cout << "6 - Task 7: Own Vector implementation" << endl;
-            cout << "7 - Task 8: EPIC STAR WARS BATTLE END GAME FANTASY" << endl;
-            cout << "8 - Task 9: Logger" << endl;
-            cout << "9 - Task 10: Hybrid Array" << endl;
+            cout << " 0 - Task 1: Adventure" << endl;
+            cout << " 1 - Task 2: Scope Time Measurement" << endl;
+            cout << " 2 - Task 3: Dynamic Object List" << endl;
+            cout << " 3 - Task 4: Fixed random code" << endl;
+            cout << " 4 - Task 5: Extended Dynamic Object List" << endl;
+            cout << " 5 - Task 6: Expression Tree" << endl;
+            cout << " 6 - Task 7: Own Vector implementation" << endl;
+            cout << " 7 - Task 8: EPIC STAR WARS BATTLE END GAME FANTASY" << endl;
+            cout << " 8 - Task 9: Logger" << endl;
+            cout << " 9 - Task 10: Hybrid Array" << endl;
+            cout << "10 - Task 11: Abstract Factory" << endl;
             cout << "X - Exit" << endl << endl;
             cin >> option;
             if ( option == "0" ) {
@@ -81,6 +83,10 @@ int main(int argc, char *argv[]) {
                 decisionValid = true;
                 Task10::Program task10;
                 task10.start();
+            } else if ( option == "10" ) {
+                decisionValid = true;
+                Task11::AbstractFleetFactory task11;
+                task11.start();
             } else if ( ( option == "x" ) || ( option == "X" ) ) {
                 break;
             } else {

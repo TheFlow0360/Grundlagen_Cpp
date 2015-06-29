@@ -6,10 +6,15 @@
 
 std::shared_ptr<SpaceShip> SpaceShipFactory::buildSpaceShip(const std::string &spaceShipTypeName, const std::string &parameter)
 {
-    return nullptr;
+    try {
+        std::shared_ptr<SpaceShip> ship( ( m_createSpaceShipFuncRegister.at( spaceShipTypeName ) )( parameter ) );
+        return ship;
+    } catch( std::out_of_range ) {
+        return nullptr;
+    }
 }
 
 void SpaceShipFactory::registerSpaceShipType(const std::string &spaceShipTypeName, const SpaceShipFactory::CreateSpaceShipFunc &createSpaceShipFunc)
 {
-
+    m_createSpaceShipFuncRegister[ spaceShipTypeName ] = createSpaceShipFunc;
 }

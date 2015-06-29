@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef TASK11_MAIN_H
+#define TASK11MAIN_H
 
 #include "../common/taskbase.h"
 #include <string>
@@ -17,4 +17,4 @@ namespace Task11 {
 }
 
 
-#endif // MAIN_H
+#endif // TASK11_MAIN_H
