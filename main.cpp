@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
 
     } catch(const std::exception&) {
 #ifndef DEBUG
-        cout << "The program encountered an error and will now be terminated. Look into the logfile for furthre information.";
+        cout << "The program encountered an error and will now be terminated. View the logfile for further information.";
 #endif
         return EXIT_FAILURE;
     }
